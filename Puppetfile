@@ -9,7 +9,7 @@ github = 'https://github.com/'
 #
 mod 'sudo', :ref => 'v4.2.0',                       :git => github + 'saz/puppet-sudo'
 mod 'ssh', :ref => 'v3.0.1',                        :git => github + 'saz/puppet-ssh'
-mod 'ntp', :ref => '7.0.1',                         :git => github + 'puppetlabs/puppetlabs-ntp'
+mod 'ntp', :ref => '7.0.0',                         :git => github + 'puppetlabs/puppetlabs-ntp'
 mod 'accounts', :ref => '06955a9455',               :git => github + 'norcams/puppet-accounts'
 mod 'timezone', :ref => 'v3.5.0',                   :git => github + 'saz/puppet-timezone.git'
 # mod 'debconf', :ref => 'v2.0.0',                    :git => github + 'smoeding/puppet-debconf'
@@ -21,7 +21,7 @@ mod 'firewall', :ref => '1.8.2',                    :git => github + 'puppetlabs
 mod 'kmod', :ref => '2.2.0',                        :git => github + 'camptocamp/puppet-kmod'
 mod 'named_interfaces', :ref => '88ce713994',       :git => github + 'norcams/puppet-named_interfaces'
 mod 'network', :ref => 'v3.3.9',                    :git => github + 'example42/puppet-network'
-mod 'ipmi', :ref => 'v2.3.0',                       :git => github + 'norcams/puppet-ipmi'
+mod 'ipmi', :ref => 'c4309504fd',                   :git => github + 'norcams/puppet-ipmi'
 mod 'lldp', :ref => '1208d86c05',                   :git => github + 'mfournier/puppet-lldp'
 # mod 'apt', :ref => '2.2.2',                         :git => github + 'puppetlabs/puppetlabs-apt'
 mod 'selinux', :ref => 'v1.3.0',                    :git => github + 'voxpupuli/puppet-selinux'
@@ -59,12 +59,12 @@ mod 'etcd', :ref => '1.12.1',                       :git => github + 'cristifalc
 #
 # profile::application::openssl
 #
-mod 'openssl', :ref => '1.10.0'                     :git => github + 'camptocamp/puppet-openssl'
+mod 'openssl', :ref => '1.10.0',                    :git => github + 'camptocamp/puppet-openssl'
 
 #
 # profile::application::consul
 #
-mod 'consul', :ref => '3.1.2',                      :git => github + 'solarkennedy/puppet-consul'
+mod 'consul', :ref => 'v3.1.2',                     :git => github + 'solarkennedy/puppet-consul'
 
 #
 # profile::application::dpapp
@@ -81,16 +81,16 @@ mod 'gitolite', :ref => '1.0',                      :git => github + 'uib/puppet
 mod 'voxpupuli/r10k', :ref => 'v6.2.0',             :git => github + 'voxpupuli/puppet-r10k'
 mod 'theforeman/foreman', :ref => '8.1.1',          :git => github + 'theforeman/puppet-foreman.git'
 # mod 'theforeman/concat_native', '1.5.0'             # forge replace with puppetlabs-concat (further down)
-mod 'theforeman/tftp', '3.0.2'                      :git => github + 'theforeman/puppet-tftp'
+mod 'theforeman/tftp', :ref => '3.0.2',             :git => github + 'theforeman/puppet-tftp'
 mod 'theforeman/puppet', :ref => '8.0.4',           :git => github + 'theforeman/puppet-puppet.git'
-mod 'theforeman/dns', '5.0.1'                       :git => github + 'theforeman/puppet-dns'
+mod 'theforeman/dns', :ref => '5.0.1',              :git => github + 'theforeman/puppet-dns'
 mod 'theforeman/dhcp', :ref => '3.1.1-norcams',     :git => github + 'norcams/puppet-dhcp.git'
 mod 'theforeman/foreman_proxy', :ref => '6.0.3',    :git => github + 'theforeman/puppet-foreman_proxy.git'
-mod 'theforeman/git', '3.0.0'                       :git => github + 'theforeman/puppet-git'
-mod 'voxpupuli/alternatives', '1.1.0'               :git => github + 'voxpupuli/puppet-alternatives'
+mod 'theforeman/git', :ref => '3.0.0',              :git => github + 'theforeman/puppet-git'
+mod 'voxpupuli/alternatives', :ref => 'v2.0.0',     :git => github + 'voxpupuli/puppet-alternatives'
 mod 'voxpupuli/extlib', :ref => 'v0.11.3',          :git => github + 'voxpupuli/puppet-extlib.git'
-mod 'puppetlabs/ruby', '1.0.0'                      :git => github + 'puppetlabs/puppetlabs-ruby'
-mod 'puppetlabs/xinetd', '3.0.0'                    :git => github + 'puppetlabs/puppetlabs-xinetd'
+mod 'puppetlabs/ruby', :ref => '1.0.0',             :git => github + 'puppetlabs/puppetlabs-ruby'
+mod 'puppetlabs/xinetd', :ref => '3.0.0',           :git => github + 'puppetlabs/puppetlabs-xinetd'
 mod 'eyaml', :ref => 'v0.3.0',                      :git => github + 'ghoneycutt/puppet-module-eyaml'
 mod 'bind', :ref => 'keyfile_resource_record',      :git => github + 'norcams/puppet-bind'
 
@@ -103,7 +103,7 @@ mod 'himlar_bootstrap', :ref => '1.0.0',            :git => github + 'norcams/pu
 # profile::logging
 #
 mod 'rsyslog', :ref => 'v5.0.0',                    :git => github + 'saz/puppet-rsyslog'
-mod 'logstash', :ref => '5.6.4',                    :git => github + 'elastic/puppet-logstash'
+mod 'logstash', :ref => '5.3.0',                    :git => github + 'elastic/puppet-logstash'
 mod 'datacat', :ref => '0.6.2',                     :git => github + 'richardc/puppet-datacat'
 mod 'elasticsearch', :ref => '5.5.0',               :git => github + 'elastic/puppet-elasticsearch'
 mod 'file_concat', :ref => '1.0.1',                 :git => github + 'electrical/puppet-lib-file_concat'
@@ -114,15 +114,15 @@ mod 'logrotate', :ref => 'v1.4.0',                  :git => github + 'yo61/puppe
 #
 mod 'sensu', :ref => 'v2.40.0',                     :git => github + 'sensu/sensu-puppet'
 mod 'uchiwa', :ref => 'v1.0.1',                     :git => github + 'yelp/puppet-uchiwa'
-mod 'graphite', :ref => '7.2.0',                    :git => github + 'echocat/puppet-graphite' # fixed upstream
-mod 'redis', :ref => '3.2.0',                       :git => github + 'arioch/puppet-redis'
-mod 'grafana', :ref => '2.5.0',                     :git => github + 'bfraser/puppet-grafana'
-mod 'statsd', :ref => '3.0.1',                      :git => github + 'justindowning/puppet-statsd'
+mod 'graphite', :ref => 'v7.2.0',                   :git => github + 'echocat/puppet-graphite' # fixed upstream
+mod 'redis', :ref => 'v3.2.0',                      :git => github + 'arioch/puppet-redis'
+mod 'grafana', :ref => 'v2.5.0',                    :git => github + 'bfraser/puppet-grafana'
+mod 'statsd', :ref => '3.1.0',                      :git => github + 'justindowning/puppet-statsd'
 
 #
 # profile::webserver::apache
 #
-mod 'puppetlabs/apache', '2.3.0'                    :git => github + 'puppetlabs/puppetlabs-apache'
+mod 'puppetlabs/apache', :ref => '2.3.0',           :git => github + 'puppetlabs/puppetlabs-apache'
 
 #
 # profile::database::postgresql
@@ -134,29 +134,29 @@ mod 'postgresql', :ref => '5.2.0',                  :git => github + 'puppetlabs
 #
 # mod 'mariadbrepo', ref => '0.2.1',                  :git => github + 'Mylezeem/puppet-mariadbrepo'
 # mod 'staging', :ref => '1.0.4',                     :git => github + 'nanliu/puppet-staging' why this fork?
-mod 'staging', :ref => '3.0.0',                     :git => github + 'voxpupuli/puppet-staging'
+mod 'staging', :ref => 'v3.0.0',                    :git => github + 'voxpupuli/puppet-staging'
 mod 'mysql', :ref => '5.1.0',                       :git => github + 'puppetlabs/puppetlabs-mysql'
 mod 'galera_arbitrator', :ref => '1.0.4',           :git => github + 'jadestorm/puppet-galera_arbitrator'
 
 #
 # profile::messaging::rabbitmq
 #
-mod 'erlang', :ref => '23fb75b8b1'                  :git => github + 'garethr/garethr-erlang'
+mod 'erlang', :ref => '23fb75b8b1',                 :git => github + 'garethr/garethr-erlang'
 mod 'rabbitmq', :ref => 'v8.0.0',                   :git => github + 'voxpupuli/puppetlabs-rabbitmq'
 
 #
 # profile::openstack::*
 #
-mod 'glance', :ref => '9.6.0',                     :git => github + 'openstack/puppet-glance'
-mod 'cinder', :ref => '9.6.0',                     :git => github + 'openstack/puppet-cinder'
-mod 'neutron', :ref => '9.6.0',                    :git => github + 'openstack/puppet-neutron'
-mod 'nova', :ref => '9.6.0',                       :git => github + 'openstack/puppet-nova'
-mod 'horizon', :ref => '9.6.0',                    :git => github + 'openstack/puppet-horizon'
-mod 'keystone', :ref => 'norcams/newton',          :git => github + 'norcams/puppet-keystone'
+mod 'glance', :ref => '9.6.0',                      :git => github + 'openstack/puppet-glance'
+mod 'cinder', :ref => '9.5.0',                      :git => github + 'openstack/puppet-cinder'
+mod 'neutron', :ref => '9.5.0',                     :git => github + 'openstack/puppet-neutron'
+mod 'nova', :ref => '9.6.0',                        :git => github + 'openstack/puppet-nova'
+mod 'horizon', :ref => '9.6.0',                     :git => github + 'openstack/puppet-horizon'
+mod 'keystone', :ref => 'norcams/newton',           :git => github + 'norcams/puppet-keystone'
 
-mod 'oslo', :ref => '9.6.0',                        :git => github + 'openstack/puppet-oslo'
-mod 'openstacklib', :ref => '9.6.0',                :git => github + 'openstack/puppet-openstacklib'
-mod 'openstack_extras', :ref => '9.6.0',            :git => github + 'openstack/puppet-openstack_extras'
+mod 'oslo', :ref => '9.5.0',                        :git => github + 'openstack/puppet-oslo'
+mod 'openstacklib', :ref => '9.5.0',                :git => github + 'openstack/puppet-openstacklib'
+mod 'openstack_extras', :ref => '9.5.0',            :git => github + 'openstack/puppet-openstack_extras'
 mod 'sysctl', :ref => 'v0.0.11',                    :git => github + 'duritong/puppet-sysctl'
 mod 'memcached', :ref => 'v3.0.2',                  :git => github + 'saz/puppet-memcached'
 
@@ -191,7 +191,7 @@ mod 'augeasproviders_grub', :ref => '3.0.0',        :git => github + 'hercules-t
 mod 'augeasproviders_mounttab', :ref =>'2.0.2',     :git => github + 'hercules-team/augeasproviders_mounttab'
 # mod 'augeasproviders_nagios', :ref => '2.0.1',      :git => github + 'hercules-team/augeasproviders_nagios' ??
 mod 'augeasproviders_pam', :ref => '2.1.1',         :git => github + 'hercules-team/augeasproviders_pam'
-mod 'augeasproviders_postgresql',:ref=>'2.0.4',     :git => github + 'hercules-team/augeasproviders_postgresql'
+mod 'augeasproviders_postgresql', :ref=>'2.0.4',    :git => github + 'hercules-team/augeasproviders_postgresql'
 mod 'augeasproviders_puppet', :ref => '2.1.1',      :git => github + 'hercules-team/augeasproviders_puppet'
 mod 'augeasproviders_shellvar', :ref => '2.2.2',    :git => github + 'hercules-team/augeasproviders_shellvar'
 mod 'augeasproviders_ssh', :ref => '2.5.2',         :git => github + 'hercules-team/augeasproviders_ssh'
