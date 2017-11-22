@@ -17,6 +17,7 @@ hierarchy:
 #      - "nodes/%{verified_host}"
 
   - name: "Location roles"
+    paths:
       - "%{::location}/roles/%{::role}-%{::variant}.yaml"
       - "%{::location}/roles/%{::role}.yaml"
 
