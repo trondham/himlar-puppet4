@@ -20,27 +20,28 @@ if size($dash_a) == 4 {
   $hostid  = $::dash_a[2]
 }
 
-if $network_mgmt1 {
+if fact('network_mgmt1') {
   $netpart_mgmt1 = regsubst($network_mgmt1,'^(\d+)\.(\d+)\.(\d+)\.(\d+)$','\1.\2.\3')
   info("netpart_mgmt1: ${netpart_mgmt1}")
 }
-if $network_transport1 {
+if fact('network_transport1') {
   $netpart_transport1 = regsubst($network_transport1,'^(\d+)\.(\d+)\.(\d+)\.(\d+)$','\1.\2.\3')
   info("netpart_transport1: ${netpart_transport1}")
 }
-if $network_trp1 {
+if fact('network_trp1') {
   $netpart_trp1 = regsubst($network_trp1,'^(\d+)\.(\d+)\.(\d+)\.(\d+)$','\1.\2.\3')
   info("netpart_trp1: ${netpart_trp1}")
 }
 
 # Set runmode to default if it is not provided
-if empty($runmode) {
+unless fact('runmode') {
   $runmode='default'
 }
+
 # Query for hash of classes to include
-$classes = hiera_hash('include', {})
-# Set array of classes to include for current runmode
-$runmode_classes = $classes[$::runmode]
+$runmode_classes = lookup("include.${::runmode}", Array, 'deep', [])
+info($runmode_classes)
+$runmode_classes.include
 
 # Output the node classification data
 info("certname=${verified_certname} location=${location} role=${role} hostid=${hostid} runmode=${::runmode}")
