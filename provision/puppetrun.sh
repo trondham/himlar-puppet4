@@ -12,7 +12,7 @@ set_certname()
   # Set default certname
   certname="vagrant-base-dev.himlar.local"
   # Use certname from puppet.conf if it is present
-  grep -q certname $PUPPET_PREFIX/etc/puppet/puppet.conf && certname="$(puppet config print certname)"
+  grep -q certname /etc/puppetlabs/puppet/puppet.conf && certname="$(puppet config print certname)"
   # Override with certname from env var if present
   certname="${HIMLAR_CERTNAME:-$certname}"
 }
@@ -42,9 +42,9 @@ puppetrun()
   puppet apply --verbose --show_diff \
     --certname $certname \
     --write-catalog-summary \
-    --basemodulepath /opt/himlar/modules:$PUPPET_PREFIX/etc/puppet/modules \
+    --basemodulepath /opt/himlar/modules:/etc/puppetlabs/code/modules \
     ${p_args[*]} \
-    $PUPPET_PREFIX/etc/puppet/manifests/site.pp
+    /etc/puppetlabs/code/environments/production/manifests/site.pp
 }
 
 # Source command line options as env vars
