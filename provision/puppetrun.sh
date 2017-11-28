@@ -1,12 +1,5 @@
 #!/bin/bash
 
-if command -v pkg >/dev/null 2>&1; then
-  # Directory prefix for FreeBSD
-  PUPPET_PREFIX=/usr/local
-  # FreeBSD needs extra symlink
-  ln -s /usr/local/etc/puppet/hieradata/ /etc/puppet/hieradata
-fi
-
 set_certname()
 {
   # Set default certname
@@ -27,13 +20,6 @@ bootstraprun()
       echo "puppetrun.sh: $certname bootstrap finished"
       rm -fv /opt/himlar/bootstrap
     fi
-  fi
-
-  # Manually restart FreeBSD interfaces
-  if command -v pkg >/dev/null 2>&1; then
-    service netif restart vtnet1
-    service netif restart vtnet2
-    service netif restart tap0
   fi
 }
 

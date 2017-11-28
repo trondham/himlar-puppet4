@@ -75,16 +75,6 @@ bootstrap_puppet()
     groupadd --system wheel
   fi
 
-  if command -v pkg >/dev/null 2>&1; then
-    # FreeBSD
-    pkg add -M https://download.iaas.uio.no/uh-iaas/ports/puppet38-3.8.7_1.txz
-    pkg check -d -y
-    pkg install -y rubygem-deep_merge rubygem-puppet-lint bash git
-    ln -s /usr/local/bin/bash /bin/bash
-    # FreeBSD spesific use
-    gem install -N ipaddress
-  fi
-
   gem install -N puppet_forge -v 2.2.6
   gem install -N r10k
 
