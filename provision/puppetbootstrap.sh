@@ -92,10 +92,6 @@ bootstrap_puppet()
   touch /opt/himlar/bootstrap && echo "Created bootstrap marker: /opt/himlar/bootstrap"
 }
 
-if command -v pkg >/dev/null 2>&1; then
-  REPORT_DIR=/var/puppet/state
-else
-  REPORT_DIR=/var/lib/puppet/state
-fi
+REPORT_DIR=/opt/puppetlabs/puppet/cache/state
 
 test -f $REPORT_DIR/last_run_report.yaml || bootstrap_puppet
