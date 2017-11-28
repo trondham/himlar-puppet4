@@ -27,9 +27,10 @@ class profile::base::common (
   # Can be used to include custom classes (mostly for testing)
   include $classes
 
-  if $manage_augeasproviders {
-    include ::augeasproviders::instances
-  }
+  # Is this still needed? Non-compatible with Puppet 4
+  # if $manage_augeasproviders {
+  #   include ::augeasproviders::instances
+  # }
 
   if $manage_accounts {
     include ::accounts::instances
