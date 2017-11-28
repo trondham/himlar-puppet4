@@ -41,9 +41,6 @@ puppetrun()
 {
   puppet apply --verbose --show_diff \
     --certname $certname \
-    --disable_warnings=deprecations \
-    --trusted_node_data \
-    --no-stringify_facts \
     --write-catalog-summary \
     --basemodulepath /opt/himlar/modules:$PUPPET_PREFIX/etc/puppet/modules \
     ${p_args[*]} \
