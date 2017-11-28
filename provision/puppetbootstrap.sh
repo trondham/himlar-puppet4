@@ -27,10 +27,10 @@ gpgcheck=1
 
 [puppetlabs]
 name=Puppetlabs Yum Repo
-baseurl=$repo/puppetlabs/
+baseurl=$repo/puppetlabs-PC1/
+gpgkey=$repo/puppetlabs-PC1/RPM-GPG-KEY-puppet
 enabled=1
 gpgcheck=1
-gpgkey=$repo/puppetlabs/RPM-GPG-KEY-puppetlabs
 EOM
   cat > /etc/yum.repos.d/CentOS-Base.repo <<- EOM
 [base]
@@ -62,8 +62,7 @@ bootstrap_puppet()
     el_repos test
     yum clean all
     yum -y update
-    yum install -y puppet facter rubygems rubygem-deep_merge \
-      rubygem-puppet-lint git vim inotify-tools
+    yum install -y puppet-agent rubygems git vim inotify-tools
   fi
 
   if command -v apt-get >/dev/null 2>&1; then
