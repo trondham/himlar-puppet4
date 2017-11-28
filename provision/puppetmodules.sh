@@ -1,12 +1,6 @@
 #!/bin/bash
 
-if command -v pkg >/dev/null 2>&1; then
-  # Directory prefix for FreeBSD
-  PUPPET_PREFIX=/usr/local
-  LN_OPTS="-sf"
-else
-  LN_OPTS="-sfT"
-fi
+LN_OPTS="-sfT"
 
 provision_from_puppetfile()
 {
@@ -14,10 +8,9 @@ provision_from_puppetfile()
   test -L /etc/puppet/manifests && rm -f /etc/puppet/manifests
   # ensure file locations are correct
   mkdir -p /etc/puppet/manifests
-  ln $LN_OPTS /opt/himlar/manifests/site.pp $PUPPET_PREFIX/etc/puppet/manifests/site.pp
-  ln $LN_OPTS /opt/himlar/hieradata $PUPPET_PREFIX/etc/puppet/hieradata
-  ln $LN_OPTS /opt/himlar/hiera.yaml $PUPPET_PREFIX/etc/puppet/hiera.yaml
-  ln $LN_OPTS /etc/puppet/hiera.yaml $PUPPET_PREFIX/etc/hiera.yaml
+  ln $LN_OPTS /opt/himlar/manifests/site.pp /etc/puppet/manifests/site.pp
+  ln $LN_OPTS /opt/himlar/hieradata /etc/puppet/hieradata
+  ln $LN_OPTS /opt/himlar/hiera.yaml /etc/puppetlabs/puppet/hiera.yaml
 
   export PUPPETFILE=/opt/himlar/Puppetfile
   export PUPPETFILE_DIR=$PUPPET_PREFIX/etc/puppet/modules
