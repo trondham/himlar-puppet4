@@ -9,7 +9,7 @@ class profile::application::access(
   include ::dpapp
 
   if $manage_firewall {
-    $hiera_allow_from_network = lookup('allow_from_network', Array, depp, undef)
+    $hiera_allow_from_network = lookup('allow_from_network', Array, 'deep', undef)
     $source = $allow_from_network? {
       undef   => $hiera_allow_from_network,
       ''      => $hiera_allow_from_network,
