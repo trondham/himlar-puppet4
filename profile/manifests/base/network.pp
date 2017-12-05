@@ -22,7 +22,7 @@ class profile::base::network(
   include ::network
 
   if $manage_hostname {
-    $domain_mgmt = hiera('domain_mgmt', $::domain)
+    $domain_mgmt = lookup('domain_mgmt', String, 'first', $::domain)
     $hostname = "${::hostname}.${domain_mgmt}"
     if $::osfamily == 'RedHat' {
       exec { 'himlar_sethostname':
@@ -85,14 +85,14 @@ class profile::base::network(
   # facts can not be used as these rules must be created in our initial kickstart run
   if $has_servicenet { #FIXME
     # Get our named and node interfaces hashes
-    $named_interface_hash = hiera_hash('named_interfaces::config')
-    $node_interface_hash = hiera_hash('network::interfaces_hash')
+    $named_interface_hash = lookup('named_interfaces::config', Hash, 'deep', {})
+    $node_interface_hash = lookup('network::interfaces_hash', Hash, 'deep', {})
     # Extract our service interface, then som basic info for that interface
     $service_if = $named_interface_hash[service]
     $service_gateway = $node_interface_hash["$service_if"][gateway]
     $service_ifaddr = $node_interface_hash["$service_if"][ipaddress]
     $service_ifmask = $node_interface_hash["$service_if"][netmask]
-    $transport_network = hiera('network_transport')
+    $transport_network = lookup('network_transport', String, 'first', '')
 
     # Create a custom route table for service interface
     network::routing_table { 'service-net':
@@ -112,17 +112,17 @@ class profile::base::network(
   }
 
   # Create extra routes, tables, rules on ifup
-  create_resources(network::mroute, hiera_hash('profile::base::network::mroute', {}))
-  create_resources(network::routing_table, hiera_hash('profile::base::network::routing_tables', {}))
-  create_resources(network::route, hiera_hash('profile::base::network::routes', {}))
+  create_resources(network::mroute, lookup('profile::base::network::mroute', Hash, 'deep', {}))
+  create_resources(network::routing_table, lookup('profile::base::network::routing_tables', Hash, 'deep', {}))
+  create_resources(network::route, lookup('profile::base::network::routes', Hash, 'deep', {}))
     if $manage_neutron_blackhole != true {
-    create_resources(network::rule, hiera_hash('profile::base::network::rules', {}))
+    create_resources(network::rule, lookup('profile::base::network::rules', Hash, 'deep', {}))
   } else {
-    $named_interface_hash = hiera('named_interfaces::config')
+    $named_interface_hash = lookup('named_interfaces::config', Hash, 'deep', {})
     $transport_if = $named_interface_hash[trp]
-    $rules_hash = hiera_hash('profile::base::network::rules')
+    $rules_hash = lookup('profile::base::network::rules', Hash, 'deep', {})
     $trp_rules = $rules_hash["${transport_if}"]['iprule']
-    $neutron_subnets = hiera('profile::openstack::resource::subnets')
+    $neutron_subnets = lookup('profile::openstack::resource::subnets', Hash, 'deep', {})
     file { "rule-${transport_if}":
       ensure  => present,
       owner   => root,
@@ -210,9 +210,9 @@ class profile::base::network(
       content => template("${module_name}/network/cl-interfaces.erb"),
     }
 
-    create_resources(cumulus_interface, hiera_hash('profile::base::network::cumulus_interfaces', {}))
-    create_resources(cumulus_bridge, hiera_hash('profile::base::network::cumulus_bridges', {}))
-    create_resources(cumulus_bond, hiera_hash('profile::base::network::cumulus_bonds', {}))
+    create_resources(cumulus_interface, lookup('profile::base::network::cumulus_interfaces', Hash, 'deep', {}))
+    create_resources(cumulus_bridge, lookup('profile::base::network::cumulus_bridges', Hash, 'deep', {}))
+    create_resources(cumulus_bond, lookup('profile::base::network::cumulus_bonds', Hash, 'deep', {}))
 
     # Check for Cumulus Management VRF, enable if disabled
     case $::operatingsystemmajrelease {
