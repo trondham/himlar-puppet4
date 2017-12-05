@@ -25,7 +25,7 @@ bootstraprun()
 
 puppetrun()
 {
-  puppet apply --verbose --show_diff \
+  /opt/puppetlabs/puppet/bin/puppet apply --verbose --show_diff \
     --certname $certname \
     --write-catalog-summary \
     --basemodulepath /opt/himlar/modules:/etc/puppetlabs/code/modules \
