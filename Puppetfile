@@ -82,7 +82,9 @@ mod 'voxpupuli/r10k', :ref => 'v6.2.0',             :git => github + 'voxpupuli/
 mod 'theforeman/foreman', :ref => '8.1.1',          :git => github + 'theforeman/puppet-foreman.git'
 # mod 'theforeman/concat_native', '1.5.0'             # forge replace with puppetlabs-concat (further down)
 mod 'theforeman/tftp', :ref => '3.0.2',             :git => github + 'theforeman/puppet-tftp'
-mod 'theforeman/puppet', :ref => '8.0.4',           :git => github + 'theforeman/puppet-puppet.git'
+mod 'theforeman/puppet', :ref => '0946aab48e',      :git => github + 'theforeman/puppet-puppet.git'
+mod 'puppetlabs/hocon', :ref => '1.0.0',            :git => github + 'puppetlabs/puppetlabs-hocon'
+mod 'puppetlabs/puppet_authorization', :ref => '0.4.0', :git => github + 'puppetlabs/puppetlabs-puppet_authorization'
 mod 'theforeman/dns', :ref => '5.0.1',              :git => github + 'theforeman/puppet-dns'
 mod 'theforeman/dhcp', :ref => '3.1.1-norcams',     :git => github + 'norcams/puppet-dhcp.git'
 mod 'theforeman/foreman_proxy', :ref => '6.0.3',    :git => github + 'theforeman/puppet-foreman_proxy.git'
