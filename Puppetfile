@@ -20,7 +20,7 @@ mod 'lvm', :ref => '1.0.0',                         :git => github + 'puppetlabs
 mod 'firewall', :ref => '1.8.2',                    :git => github + 'puppetlabs/puppetlabs-firewall'
 mod 'kmod', :ref => '2.2.0',                        :git => github + 'camptocamp/puppet-kmod'
 mod 'named_interfaces', :ref => '88ce713994',       :git => github + 'norcams/puppet-named_interfaces'
-mod 'network', :ref => 'v3.3.9',                    :git => github + 'example42/puppet-network'
+mod 'network', :ref => '40f84826a8',             :git => github + 'norcams/puppet-network'
 mod 'ipmi', :ref => 'c4309504fd',                   :git => github + 'norcams/puppet-ipmi'
 mod 'lldp', :ref => '1208d86c05',                   :git => github + 'mfournier/puppet-lldp'
 # mod 'apt', :ref => '2.2.2',                         :git => github + 'puppetlabs/puppetlabs-apt'
@@ -155,6 +155,7 @@ mod 'neutron', :ref => '9.5.0',                     :git => github + 'openstack/
 mod 'nova', :ref => '9.6.0',                        :git => github + 'openstack/puppet-nova'
 mod 'horizon', :ref => '9.6.0',                     :git => github + 'openstack/puppet-horizon'
 mod 'keystone', :ref => 'norcams/newton',           :git => github + 'norcams/puppet-keystone'
+mod 'gnocchi', :ref => '9.5.0',                  :git => github + 'openstack/puppet-gnocchi'
 
 mod 'oslo', :ref => '9.5.0',                        :git => github + 'openstack/puppet-oslo'
 mod 'openstacklib', :ref => '9.5.0',                :git => github + 'openstack/puppet-openstacklib'
