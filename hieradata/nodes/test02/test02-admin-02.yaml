@@ -14,3 +14,6 @@ foreman_proxy::tftp: false
 foreman_proxy::dhcp: false
 foreman_proxy::dns:  false
 foreman_proxy::bmc:  false
+
+foreman::foreman_url: "https://test02-admin-02.mgmt.test02.uhdc.no"
+foreman::config::passenger::serveraliases:  [ "foreman4.%{hiera('domain_mgmt')}" ]
