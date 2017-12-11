@@ -10,6 +10,8 @@ network::interfaces_hash:
 profile::network::services::manage_dns_records: false
 profile::network::services::manage_dhcp_rsvs:   false
 
+profile::dns::rndc_key::create_admin_key:    false
+
 foreman_proxy::tftp: false
 foreman_proxy::dhcp: false
 foreman_proxy::dns:  false
