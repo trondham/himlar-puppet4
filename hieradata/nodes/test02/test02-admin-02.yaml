@@ -21,3 +21,5 @@ foreman::foreman_url: "https://test02-admin-02.mgmt.test02.uhdc.no"
 foreman::config::passenger::serveraliases:  [ "foreman4.%{hiera('domain_mgmt')}" ]
 
 puppet::server_foreman_url: "https://test02-admin-02.mgmt.test02.uhdc.no"
+puppet::dns_alt_names:
+  - "puppet4.%{hiera('domain_mgmt')}"
