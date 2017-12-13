@@ -6,6 +6,8 @@ network::interfaces_hash:
     gateway:   "%{hiera('netcfg_mgmt_gateway')}"
     mtu:       '1500'
     defroute:  'yes'
+    dns1:      "%{hiera('netcfg_dns_server1')}"
+    domain:    "%{hiera('netcfg_dns_search')}"
 
 profile::network::services::manage_dns_records: false
 profile::network::services::manage_dhcp_rsvs:   false
