@@ -145,6 +145,7 @@ mod 'galera_arbitrator', :ref => '1.0.4',           :git => github + 'jadestorm/
 #
 mod 'erlang', :ref => '23fb75b8b1',                 :git => github + 'garethr/garethr-erlang'
 mod 'rabbitmq', :ref => 'v8.0.0',                   :git => github + 'voxpupuli/puppetlabs-rabbitmq'
+mod 'archive', :ref => 'v2.2.0',                    :git => github + 'voxpupuli/puppet-archive'
 
 #
 # profile::openstack::*
