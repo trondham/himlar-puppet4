@@ -1,5 +1,7 @@
 ---
 include:
+  bootstrap:
+    - profile::development::network::dns
   default:
     - profile::development::network::dns
     - profile::monitoring::sensu::agent
