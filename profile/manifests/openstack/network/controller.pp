@@ -30,9 +30,14 @@ class profile::openstack::network::controller(
   }
 
   if $manage_firewall {
-    profile::firewall::rule { '210 neutron-server accept tcp':
-      port   => 9696,
-      extras => $firewall_extras,
+    firewall { '210 neutron-server accept tcp':
+      proto    => 'tcp',
+      dport    => 9696,
+      action   => 'accept',
+      state    => ['NEW'],
+      source   => '0.0.0.0/0',
+      chain    => 'INPUT',
+      provider => 'iptables'
     }
   }
 }
