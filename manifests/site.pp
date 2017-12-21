@@ -18,6 +18,7 @@ if size($dash_a) == 4 {
   $hostid  = $::dash_a[3]
 } else {
   $hostid  = $::dash_a[2]
+  $variant = ''
 }
 
 if fact('network_mgmt1') {
