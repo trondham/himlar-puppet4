@@ -119,7 +119,6 @@ class profile::base::network(
     create_resources(network::rule, lookup('profile::base::network::rules', Hash, 'deep', {}))
   } else {
     $named_interface_hash = lookup('named_interfaces::config', Hash, 'first', {})
-    $transport_if = $named_interface_hash[trp]
     $rules_hash = lookup('profile::base::network::rules', Hash, 'deep', {})
     $trp_rules = $rules_hash["${transport_if}"]['iprule']
     $neutron_subnets = lookup('profile::openstack::resource::subnets', Hash, 'first', {})

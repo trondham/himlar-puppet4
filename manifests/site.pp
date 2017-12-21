@@ -41,22 +41,11 @@ unless fact('runmode') {
 
 # Query for hash of classes to include
 $runmode_classes = lookup("include.${::runmode}", Array, 'deep', [])
-info($runmode_classes)
 $runmode_classes.include
 
 # Output the node classification data
 info("certname=${verified_certname} location=${location} role=${role} hostid=${hostid} runmode=${::runmode}")
 info(join($runmode_classes,' '))
-
-# TODO: Move this define out
-# lint:ignore:autoloader_layout
-define site::include
-# lint:endignore
-{
-  info($name)
-  include $name
-}
-site::include { $runmode_classes: }
 
 # Empty default node
 node default { }
