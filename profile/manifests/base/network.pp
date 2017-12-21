@@ -118,13 +118,8 @@ class profile::base::network(
     if $manage_neutron_blackhole != true {
     create_resources(network::rule, lookup('profile::base::network::rules', Hash, 'deep', {}))
   } else {
-<<<<<<< HEAD
     $named_interface_hash = lookup('named_interfaces::config', Hash, 'first', {})
     $transport_if = $named_interface_hash["trp"][0] # FIXME should cater for many interfaces
-=======
-    $named_interface_hash = lookup('named_interfaces::config', Hash, 'unique', {})
-    $transport_if = $named_interface_hash[trp]
->>>>>>> upstream/master
     $rules_hash = lookup('profile::base::network::rules', Hash, 'deep', {})
     $trp_rules = $rules_hash["${transport_if}"]['iprule']
     $neutron_subnets = lookup('profile::openstack::resource::subnets', Hash, 'unique', {})
