@@ -163,6 +163,9 @@ endpoint__network__public:        "https://network.api.%{hiera('domain_public')}
 endpoint__metric__admin:          "http://metric.%{hiera('domain_trp')}:8041"
 endpoint__metric__internal:       "http://metric.%{hiera('domain_trp')}:8041"
 endpoint__metric__public:         "https://metric.api.%{hiera('domain_public')}:8041"
+endpoint__object__admin:          "http://object.%{hiera('domain_trp')}:8080"
+endpoint__object__internal:       "http://object.%{hiera('domain_trp')}:8080"
+endpoint__object__public:         "https://object.api.%{hiera('domain_public')}:8080"
 
 #
 # DNS (merge of this and location)
@@ -246,6 +249,7 @@ profile::network::services::dns_records:
     "compute.%{hiera('domain_trp')}":                       "%{hiera('netcfg_trp_netpart')}.86"
     "network.%{hiera('domain_trp')}":                       "%{hiera('netcfg_trp_netpart')}.86"
     "identity.%{hiera('domain_trp')}":                      "%{hiera('netcfg_trp_netpart')}.86"
+    "object.%{hiera('domain_trp')}":                        "%{hiera('netcfg_trp_netpart')}.86"
     "metric.%{hiera('domain_trp')}":                        "%{hiera('netcfg_trp_netpart')}.96"
 
 #
