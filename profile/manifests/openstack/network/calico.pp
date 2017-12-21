@@ -18,14 +18,14 @@ class profile::openstack::network::calico(
   if $manage_firewall {
     profile::firewall::rule { '910 dnsmasq - allow DHCP requests':
       proto  => 'udp',
-      dport   => ['67','68'],
+      dport  => ['67','68'],
       extras => {
         sport => ['67','68'],
       }
     }
     profile::firewall::rule { '912 bird allow bfd':
       proto  => 'udp',
-      dport   => ['3784','3785','4784','4785'],
+      dport  => ['3784','3785','4784','4785'],
     }
     # Per https://github.com/projectcalico/calico/blob/master/rpm/calico.spec#L43-L48
     profile::firewall::rule { '911 calico - mangle checksum for dhcp':
