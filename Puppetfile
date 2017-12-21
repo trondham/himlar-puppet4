@@ -163,6 +163,7 @@ mod 'openstacklib', :ref => '9.5.0',                :git => github + 'openstack/
 mod 'openstack_extras', :ref => '9.5.0',            :git => github + 'openstack/puppet-openstack_extras'
 mod 'sysctl', :ref => 'v0.0.11',                    :git => github + 'duritong/puppet-sysctl'
 mod 'memcached', :ref => 'v3.0.2',                  :git => github + 'saz/puppet-memcached'
+mod 'rsync', :ref => '0.4.0',                       :git => github + 'puppetlabs/puppetlabs-rsync'
 
 #
 # libvirt
