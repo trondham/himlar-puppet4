@@ -45,7 +45,7 @@ mod 'quagga', :ref => '4f7cac717c',                 :git => github + 'norcams/pu
 # profile::network::
 #
 mod 'bird', :ref => '1.1.0',                        :git => github + 'sbadia/puppet-bird'
-mod 'calico', :ref => 'fad10cac71',                 :git => github + 'norcams/puppet-calico'
+mod 'calico', :ref => 'badc751a44',                 :git => github + 'norcams/puppet-calico'
 mod 'dnsmasq', :ref => 'v1.3.1',                    :git => github + 'saz/puppet-dnsmasq'
 mod 'ipcalc', :ref => '2.2.0',                      :git => github + 'inkblot/puppet-ipcalc'
 mod 'tinyproxy', :ref => 'ef4a8b0bb2',              :git => github + 'earsdown/puppet-tinyproxy'
@@ -69,7 +69,7 @@ mod 'consul', :ref => 'v3.1.2',                     :git => github + 'solarkenne
 #
 # profile::application::dpapp
 #
-mod 'dpapp', :ref => '1.2',                         :git => github + 'norcams/puppet-dpapp'
+mod 'dpapp', :ref => '1.3',                      :git => github + 'norcams/puppet-dpapp'
 
 #
 # profile::application::git
@@ -99,7 +99,7 @@ mod 'bind', :ref => 'keyfile_resource_record',      :git => github + 'norcams/pu
 #
 # bootstrap
 #
-mod 'himlar_bootstrap', :ref => '1.0.0',            :git => github + 'norcams/puppet-himlar_bootstrap'
+mod 'himlar_bootstrap', :ref => '1.0.1',            :git => github + 'norcams/puppet-himlar_bootstrap'
 
 #
 # profile::logging
@@ -145,6 +145,7 @@ mod 'galera_arbitrator', :ref => '1.0.4',           :git => github + 'jadestorm/
 #
 mod 'erlang', :ref => '23fb75b8b1',                 :git => github + 'garethr/garethr-erlang'
 mod 'rabbitmq', :ref => 'v8.0.0',                   :git => github + 'voxpupuli/puppetlabs-rabbitmq'
+mod 'archive', :ref => 'v2.2.0',                    :git => github + 'voxpupuli/puppet-archive'
 
 #
 # profile::openstack::*

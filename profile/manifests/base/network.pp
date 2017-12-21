@@ -86,7 +86,7 @@ class profile::base::network(
   if $has_servicenet { #FIXME
     # Get our named and node interfaces hashes
     $named_interface_hash = lookup('named_interfaces::config', Hash, 'deep', {})
-    $node_interface_hash = lookup('network::interfaces_hash', Hash, 'deep', {})
+    $node_interface_hash = lookup('network::interfaces_hash', Hash, 'unique', {})
     # Extract our service interface, then som basic info for that interface
     $service_if = $named_interface_hash[service]
     $service_gateway = $node_interface_hash["$service_if"][gateway]
@@ -122,7 +122,7 @@ class profile::base::network(
     $transport_if = $named_interface_hash["trp"][0] # FIXME should cater for many interfaces
     $rules_hash = lookup('profile::base::network::rules', Hash, 'deep', {})
     $trp_rules = $rules_hash["${transport_if}"]['iprule']
-    $neutron_subnets = lookup('profile::openstack::resource::subnets', Hash, 'deep', {})
+    $neutron_subnets = lookup('profile::openstack::resource::subnets', Hash, 'unique', {})
     file { "rule-${transport_if}":
       ensure  => present,
       owner   => root,
