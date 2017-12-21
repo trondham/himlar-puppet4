@@ -18,7 +18,7 @@ class profile::openstack::network::controller(
     Openstacklib::Policy::Base {
       file_path => $neutron_policy_path,
     }
-    $policy = lookup('profile::openstack::network::policies', Hash, 'unique', {})
+    $policy = lookup('profile::openstack::network::policies', Hash, 'first', {})
     create_resources('openstacklib::policy::base', $policy)
                 #{ require => Class[::neutron::server] })
   }

@@ -4,5 +4,5 @@
 class profile::storage::cephpool {
   require ::ceph::profile::client
 
-  create_resources(ceph::pool, lookup('profile::storage::cephpool::pools', Hash, 'unique', {}))
+  create_resources(ceph::pool, lookup('profile::storage::cephpool::pools', Hash, 'first', {}))
 }
