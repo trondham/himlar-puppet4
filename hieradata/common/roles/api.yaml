@@ -207,8 +207,18 @@ profile::highavailability::loadbalancing::haproxy::haproxy_balancermembers:
     options:            'check'
   object:
     listening_service:  'bk_object'
-    server_names:       ['%{::location}-object-01']
-    ipaddresses:        ["%{hiera('netcfg_trp_netpart')}.119"]
+    server_names:
+      - '%{::location}-object-01'
+      - '%{::location}-object-02'
+      - '%{::location}-object-03'
+      - '%{::location}-object-04'
+      - '%{::location}-object-05'
+    ipaddresses:
+      - "%{hiera('netcfg_trp_netpart')}.119"
+      - "%{hiera('netcfg_trp_netpart')}.120"
+      - "%{hiera('netcfg_trp_netpart')}.121"
+      - "%{hiera('netcfg_trp_netpart')}.122"
+      - "%{hiera('netcfg_trp_netpart')}.123"
     ports:              '8080'
     options:            'check'
   status:
