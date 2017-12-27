@@ -74,7 +74,7 @@ mod 'dpapp', :ref => '1.3',                      :git => github + 'norcams/puppe
 #
 # profile::application::git
 #
-mod 'gitolite', :ref => '1.0',                      :git => github + 'uib/puppet-gitolite'
+mod 'gitolite', :ref => '1.1',                      :git => github + 'uib/puppet-gitolite'
 
 # profile::application::foreman
 #
