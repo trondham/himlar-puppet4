@@ -96,12 +96,12 @@ class profile::network::services(
 
       if $manage_firewall {
         profile::firewall::rule { '020 dns-proxy accept tcp':
-          port   => 53,
+          dport  => 53,
           proto  => 'tcp',
           extras => $firewall_extras
         }
         profile::firewall::rule { '021 dns-proxy accept udp':
-          port   => 53,
+          dport  => 53,
           proto  => 'udp',
           extras => $firewall_extras
         }
