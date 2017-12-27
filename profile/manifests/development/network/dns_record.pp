@@ -6,7 +6,9 @@ define profile::development::network::dns_record(
   if $use_dnsmasq {
     host { $vars[0]:
       ip     => $vars[1],
-      notify => Class['dnsmasq::reload'],
+      notify => $::runmode? { # notify dnsmasq only works in default runmode
+        'default' => Class['dnsmasq::reload'],
+        default   => undef }
     }
   } else {
     host { $vars[0]:
