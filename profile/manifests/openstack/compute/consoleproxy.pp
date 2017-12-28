@@ -7,7 +7,7 @@ class profile::openstack::compute::consoleproxy(
 ) {
   include ::profile::openstack::compute
 
-  if $spice =~ /true/  {
+  if $spice {
     include ::nova::spicehtml5proxy
     include ::nova::config
     $port = 6082
@@ -31,7 +31,7 @@ class profile::openstack::compute::consoleproxy(
     }
   }
 
-  if $spice =~ /true/  {
+  if $spice {
     package { 'openstack-nova-spicehtml5proxy':
       ensure => 'installed',
     }
