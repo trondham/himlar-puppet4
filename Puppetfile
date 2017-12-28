@@ -34,7 +34,7 @@ mod 'selinux', :ref => 'v1.3.0',                    :git => github + 'voxpupuli/
 #
 # profile::base::login
 #
-mod 'googleauthenticator', :ref => 'norcams-0.1.1', :git => github + 'norcams/puppet-googleauthenticator'
+mod 'googleauthenticator', :ref => 'norcams-2.0.1', :git => github + 'norcams/puppet-googleauthenticator'
 
 #
 # profile::network::leaf
@@ -74,7 +74,7 @@ mod 'dpapp', :ref => '1.3',                      :git => github + 'norcams/puppe
 #
 # profile::application::git
 #
-mod 'gitolite', :ref => '1.0',                      :git => github + 'uib/puppet-gitolite'
+mod 'gitolite', :ref => '1.1',                      :git => github + 'uib/puppet-gitolite'
 
 # profile::application::foreman
 #

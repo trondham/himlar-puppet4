@@ -18,15 +18,8 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 baseurl=$repo/epel
 EOM
   cat > /etc/yum.repos.d/puppetlabs.repo <<- EOM
-[puppetlabs-deps]
-name=Puppetlabs Dependencies Yum Repo
-baseurl=$repo/puppetlabs-deps/
-gpgkey=$repo/puppetlabs-deps/RPM-GPG-KEY-puppetlabs
-enabled=1
-gpgcheck=1
-
 [puppetlabs]
-name=Puppetlabs Yum Repo
+name=Puppet 4 Yum Repo
 baseurl=$repo/puppetlabs-PC1/
 gpgkey=$repo/puppetlabs-PC1/RPM-GPG-KEY-puppet
 enabled=1

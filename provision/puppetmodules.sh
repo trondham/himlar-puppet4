@@ -6,10 +6,6 @@ ENV_PATH=environments/production
 
 provision_from_puppetfile()
 {
-  # MIGRATION: remove old symlink if it is present
-  test -L /etc/puppet/manifests && rm -f /etc/puppet/manifests
-  # ensure file locations are correct
-  mkdir -p /etc/puppet/manifests
   ln $LN_OPTS /opt/himlar/manifests/site.pp $CODE_PATH/$ENV_PATH/manifests/site.pp
   rm -rf $CODE_PATH/$ENV_PATH/hieradata
   ln $LN_OPTS /opt/himlar/hieradata $CODE_PATH/$ENV_PATH/hieradata

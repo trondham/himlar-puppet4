@@ -116,9 +116,9 @@ common_config()
 
   # Create and update OS
   /bin/hammer os create --name CentOS --major 7 || true
-  centos_os=$(/bin/hammer --csv os list --per-page 1000 | grep 'CentOS 7.3' | cut -d, -f1)
+  centos_os=$(/bin/hammer --csv os list --per-page 1000 | grep 'CentOS 7.4' | cut -d, -f1)
   /bin/hammer os update --id $centos_os --name CentOS --major 7 \
-    --description "CentOS 7.3" \
+    --description "CentOS 7.4" \
     --family Redhat \
     --architecture-ids 1 \
     --medium-ids ${medium_id_2},${medium_id_1} \

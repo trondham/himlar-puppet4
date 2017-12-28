@@ -70,6 +70,7 @@ profile::network::services::dns_records:
     "network.api.%{hiera('domain_public')}":              "%{hiera('netcfg_public_netpart')}.250"
     "compute.api.%{hiera('domain_public')}":              "%{hiera('netcfg_public_netpart')}.250"
     "volume.api.%{hiera('domain_public')}":               "%{hiera('netcfg_public_netpart')}.250"
+    "object.api.%{hiera('domain_public')}":               "%{hiera('netcfg_public_netpart')}.250"
     # mgmt
     "%{::location}-login-01.%{hiera('domain_mgmt')}":     "%{hiera('netcfg_mgmt_netpart')}.10"
     # local2
@@ -153,6 +154,11 @@ gnocchi::db::mysql::password:                       'gnocchi_pass'
 ceilometer::keystone::authtoken:                    'ceilometer'
 ceilometer::telemetry_secret:                       'ceilometer'
 ceilometer::rabbit_password:                        'ceilometer'
+
+# object
+swift::swift_hash_path_suffix:                      'shared_secret'
+swift_api_password:                                 'swift_pass'
+dispersion_api_password:                            'dispersion_pass'
 
 # The root user password
 #accounts::root_user::password:                      '$6$qVzsC5fQMqdF4gKw$.zFAu9LtxSAaPgbtZul/ZXUXpBgjaVJbQ.CIMo9eo5TslU8KU1SO/tjRZbh1hFM6RB55QFEzJlF5ejAgglk50.'
