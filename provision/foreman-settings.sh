@@ -83,8 +83,10 @@ common_config()
   # Provisioning and discovery setup
   #
 
-  # Enable puppetlabs repo
-  /bin/hammer global-parameter set --name enable-puppetlabs-repo --value true
+  # Enable puppetlabs repo for puppet 4 and disable for puppet 3
+  /bin/hammer global-parameter set --name enable-puppetlabs-repo --value false
+  /bin/hammer global-parameter set --name enable-puppetlabs-pc1-repo --value true
+
   # Enable clokcsync in Kickstart
   /bin/hammer global-parameter set --name time-zone --value 'Europe/Oslo'
   /bin/hammer global-parameter set --name ntp-server --value 'no.pool.ntp.org'
