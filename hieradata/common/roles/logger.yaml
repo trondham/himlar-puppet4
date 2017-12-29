@@ -40,7 +40,7 @@ profile::base::lvm::logical_volume:
   'lv_log':
     volume_group: 'vg_log'
     fs_type:      "xfs"
-    mountpath:    "/opt"
+    mountpath:    "/opt/log"
 
 logrotate::rules:
   openstack:
