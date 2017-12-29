@@ -86,6 +86,7 @@ common_config()
   # Enable puppetlabs repo for puppet 4 and disable for puppet 3
   /bin/hammer global-parameter set --name enable-puppetlabs-repo --value false
   /bin/hammer global-parameter set --name enable-puppetlabs-pc1-repo --value true
+  /bin/hammer global-parameter set --name run-puppet-in-installer --value true
 
   # Enable clokcsync in Kickstart
   /bin/hammer global-parameter set --name time-zone --value 'Europe/Oslo'
@@ -102,7 +103,7 @@ common_config()
 
   # Sync our custom provision templates
   /sbin/foreman-rake templates:sync \
-    repo="https://github.com/norcams/community-templates.git" branch="norcams" associate="always"
+    repo="https://github.com/norcams/community-templates.git" branch="puppet4" associate="always"
   # Save template ids
   norcams_provision_id=$(/bin/hammer --csv template list --per-page 1000 | grep 'norcams Kickstart default' | cut -d, -f1)
   norcams_pxelinux_id=$(/bin/hammer --csv template list --per-page 1000 | grep 'norcams PXELinux default' | cut -d, -f1)
@@ -123,7 +124,7 @@ common_config()
     --description "CentOS 7.4" \
     --family Redhat \
     --architecture-ids 1 \
-    --medium-ids ${medium_id_2},${medium_id_1} \
+    --medium-ids ${medium_id_2} \
     --partition-table-ids $norcams_ptable_id
   # Set default Kickstart and PXELinux templates and associate with os
   /bin/hammer template update --id $norcams_provision_id --operatingsystem-ids $centos_os
