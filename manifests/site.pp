@@ -36,7 +36,11 @@ if fact('network_trp1') {
 
 # Set runmode to default if it is not provided
 unless fact('runmode') {
-  $runmode='default'
+  if fact('is_installer') { # from kickstart in foreman
+    $runmode = 'kickstart'
+  } else {
+    $runmode='default'
+  }
 }
 
 # Query for hash of classes to include
