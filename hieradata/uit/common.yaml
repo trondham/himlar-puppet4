@@ -1,6 +1,14 @@
 ---
+
+####
+#### FIXME: UiB data for now, until we move our first box
+####
+
 location_environment:     'prod'
-location_description:     'Production external services UiB'
+location_description:     'Production external services UiT'
+
+domain_trp:               'iaas.uib.no' 
+domain_mgmt:              'iaas.uib.no'
 
 domain_frontend:          'ha.uib.no'
 domain_public:            'ha.uib.no'
