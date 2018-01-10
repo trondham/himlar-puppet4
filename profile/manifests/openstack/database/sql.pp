@@ -50,7 +50,7 @@ class profile::openstack::database::sql (
       #   privileges => ['ALL'],
       #   table    => '*.*',
       #   user     => "nova@compute.${addr2}",
-      }
+      #}
     }
   }
 
