@@ -18,3 +18,5 @@ network::interfaces_hash:
     domain:       "%{hiera('netcfg_dns_search')}"
     peerdns:      'yes'
     defroute:     'no'
+
+puppet::puppetmaster: "puppet4.%{hiera('domain_mgmt')}"
