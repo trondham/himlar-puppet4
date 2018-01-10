@@ -17,3 +17,5 @@ network::interfaces_hash:
     dns1:         "%{hiera('netcfg_dns_server1')}"
     domain:       'test.iaas.uio.no'
     peerdns:      'yes'
+
+puppet::puppetmaster: "puppet4.%{hiera('domain_mgmt')}"
