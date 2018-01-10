@@ -45,11 +45,11 @@ class profile::openstack::database::sql (
         table    => '*.*',
         user     => "nova@${addr1}.%",
       }
-      mysql_grant { "nova@compute.${addr2}/*.*":
-        ensure    => present,
-        privileges => ['ALL'],
-        table    => '*.*',
-        user     => "nova@compute.${addr2}",
+      # mysql_grant { "nova@compute.${addr2}/*.*":
+      #   ensure    => present,
+      #   privileges => ['ALL'],
+      #   table    => '*.*',
+      #   user     => "nova@compute.${addr2}",
       }
     }
   }
