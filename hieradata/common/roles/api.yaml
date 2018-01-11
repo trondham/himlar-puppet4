@@ -155,7 +155,9 @@ profile::highavailability::loadbalancing::haproxy::haproxy_backends:
       - errorfile:    '503 /etc/haproxy/error.api.http'
   bk_object:
     options:
-      - option:       'httplog'
+      - option:
+        - 'httplog'
+        - 'httpchk /healthcheck'
   bk_status:
     options:
       - option:       'httplog'
