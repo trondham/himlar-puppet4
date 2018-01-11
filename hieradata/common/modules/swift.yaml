@@ -50,3 +50,7 @@ swift::proxy::pipeline:
 
 # ringserver (node: object)
 swift::ringserver::local_net_ip:              '%{::ipaddress_trp1}'
+
+# testing (default disabled)
+swift::test_file::password:                   "%{hiera('keystone_admin_password')}"
+swift::test_file::auth_server:                "identity.%{hiera('domain_trp')}"
