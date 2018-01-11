@@ -22,6 +22,9 @@ profile::openstack::openrc::password:     "%{hiera('swift_api_password')}"
 profile::openstack::openrc::username:     'swift'
 profile::openstack::openrc::project_name: 'services'
 
+# Memcached max memory 75%
+memcached::max_memory: '75%'
+
 # Enable extra yum repo
 profile::base::yumrepo::repo_hash:
   rdo-release:
