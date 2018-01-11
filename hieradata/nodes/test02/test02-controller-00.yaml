@@ -59,11 +59,10 @@ profile::network::nat::enable_snat6: true
 profile::network::nat::source6:      "%{hiera('netcfg_public_netpart6')}::/%{hiera('netcfg_public_netmask6')}"
 profile::network::nat::outiface:     'em4'
 
-# On this host sdd is the OS disk
 lvm::volume_groups:
   vg_ext:
     physical_volumes:
-      - /dev/sdd3
+      - /dev/sdb3
     logical_volumes:
       lv_ext:
         fs_type:   xfs
