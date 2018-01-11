@@ -33,3 +33,4 @@ profile::base::network::routes:
     'table':     [ 'main', ]
     'family':    [ '6', ]
 
+puppet::puppetmaster: "puppet4.%{hiera('domain_mgmt')}"
