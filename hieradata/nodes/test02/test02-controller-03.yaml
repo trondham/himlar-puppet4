@@ -37,3 +37,5 @@ named_interfaces::config:
      - br0
   trp:
      - br1
+
+puppet::puppetmaster: "puppet4.%{hiera('domain_mgmt')}"
