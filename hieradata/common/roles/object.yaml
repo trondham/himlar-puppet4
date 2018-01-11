@@ -5,6 +5,7 @@ include:
     - profile::openstack::cache
     - profile::openstack::object::storage
     - profile::openstack::object::proxy
+    - profile::logging::rsyslog::client
 
 profile::openstack::object::proxy::manage_firewall:   true
 profile::openstack::object::proxy::manage_ringserver: true
