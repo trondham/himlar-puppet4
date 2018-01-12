@@ -12,6 +12,3 @@ profile::network::dns_extra_zone::zone:
 # Bind utils will be installed with foreman::dns
 profile::base::common::packages:
   'bind-utils': { ensure: absent }
-
-puppet::server_jvm_min_heap_size:       '512M'
-puppet::server_jvm_max_heap_size:       '512M'
