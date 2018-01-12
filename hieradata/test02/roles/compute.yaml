@@ -22,7 +22,7 @@ ntp::servers:
 profile::monitoring::sensu::agent::enable_agent:  true
 
 puppet::cron_cmd: "if [ -e /root/proxy.sh ] ; then source /root/proxy.sh ; fi ; \
-  /usr/bin/env puppet agent --config %{puppet::dir}/puppet.conf --onetime --no-daemonize"
+  /usr/bin/env puppet agent --config %{hiera('puppet::dir')}/puppet.conf --onetime --no-daemonize"
 
 # Add custom routing table for private network to NAT
 profile::base::network::routes:
