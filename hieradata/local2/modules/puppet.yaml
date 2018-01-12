@@ -3,3 +3,4 @@ puppet::runmode: 'none'
 
 puppet::server_jvm_min_heap_size:       '256M'
 puppet::server_jvm_max_heap_size:       '256M'
+puppet::server_max_active_instances:    1
