@@ -14,7 +14,7 @@ profile::openstack::network::calico::manage_bird: false
 
 himlar_bootstrap::virt_install:
   '%{location}-admin-01':
-    domain:          '%{domain}'
+    domain:          "%{hiera('domain_mgmt')}"
     libvirt_pool:    'dirpool'
     libvirt_network: 'directnet'
     install_ip:      "%{hiera('netcfg_mgmt_netpart')}.11"
