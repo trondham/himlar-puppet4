@@ -16,3 +16,7 @@ puppet::additional_settings:
   'trusted_node_data': true
   'disable_warnings' : 'deprecations'
   'stringify_facts'  : 'false'
+
+# puppet4 puppetserver
+puppet::server_jvm_min_heap_size:       '512M'
+puppet::server_jvm_max_heap_size:       '512M'
