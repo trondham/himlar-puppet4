@@ -99,7 +99,7 @@ mod 'bind', :ref => 'keyfile_resource_record',      :git => github + 'norcams/pu
 #
 # bootstrap
 #
-mod 'himlar_bootstrap', :ref => '1.0.2',            :git => github + 'norcams/puppet-himlar_bootstrap'
+mod 'himlar_bootstrap', :ref => '1.0.3',            :git => github + 'norcams/puppet-himlar_bootstrap'
 
 #
 # profile::logging
