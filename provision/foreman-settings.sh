@@ -16,6 +16,8 @@ mgmt_interface=eth0
 #mgmt_interface=$(hiera foreman_proxy::dhcp_interface role=foreman location=$foreman_location)
 mgmt_network=$(facter network_${mgmt_interface})
 mgmt_netmask=$(facter netmask_${mgmt_interface})
+#repo=$(sed -n 's/^baseurl=//p' CentOS-Base.repo | head -1 | rev | cut -d/ -f3- | rev)
+repo=$(sed -n 's/^baseurl=//p' CentOS-Base.repo | head -1)
 
 #
 # Location specific configs
@@ -95,7 +97,7 @@ common_config()
   # Create ftp.uninett.no medium
   /bin/hammer medium create --name 'CentOS download.iaas.uio.no' \
     --os-family Redhat \
-    --path 'https://download.iaas.uio.no/uh-iaas/prod/centos-base' || true
+    --path $repo || true
   # Save CentOS mirror ids
   medium_id_1=$(/bin/hammer --csv medium info --name 'CentOS mirror' | tail -n1 | cut -d, -f1)
   medium_id_2=$(/bin/hammer --csv medium info --name 'CentOS download.iaas.uio.no' | tail -n1 | cut -d, -f1)
