@@ -62,6 +62,7 @@ profile::base::common::packages:
   'libaugeas-ruby1.9.1': {}
   'augeas-tools': {}
   'cl-mgmtvrf': {}
+  'python-apt': {}
 
 sudo::configs:
   snmp:
