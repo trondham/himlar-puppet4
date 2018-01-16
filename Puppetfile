@@ -26,6 +26,7 @@ mod 'ipmi', :ref => 'v2.3.0',                       :git => github + 'jhoblitt/p
 mod 'lldp', :ref => '1208d86c05',                   :git => github + 'mfournier/puppet-lldp'
 # mod 'apt', :ref => '2.2.2',                         :git => github + 'puppetlabs/puppetlabs-apt'
 mod 'selinux', :ref => 'v1.3.0',                    :git => github + 'voxpupuli/puppet-selinux'
+mod 'designate', :ref => '57002e6',                 :git => github + 'openstack/puppet-designate'
 
 #
 # FreeBSD spesific

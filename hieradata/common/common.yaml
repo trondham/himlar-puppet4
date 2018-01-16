@@ -120,6 +120,8 @@ service__address__consoleproxy:
 service__address__metric:         "metric.%{hiera('domain_trp')}"
 service__address__ns_01:          "%{hiera('netcfg_trp_netpart')}.16"
 service__address__ns_02:          "%{hiera('netcfg_trp_netpart')}.17"
+service__address__designate_api:  "name.%{hiera('domain_trp')}"
+service__address__mdns:           "%{hiera('netcfg_trp_netpart')}.97"
 
 #
 # Management (proxy and logger must be IP)
@@ -157,6 +159,9 @@ endpoint__metric__public:         "https://metric.api.%{hiera('domain_public')}:
 endpoint__object__admin:          "http://object.%{hiera('domain_trp')}:8080"
 endpoint__object__internal:       "http://object.%{hiera('domain_trp')}:8080"
 endpoint__object__public:         "https://object.api.%{hiera('domain_public')}:8080"
+endpoint__designate__admin:       "http://name.%{hiera('domain_trp')}:9001"
+endpoint__designate__internal:    "http://name.%{hiera('domain_trp')}:9001"
+endpoint__designate__public:      "https://designate.api.%{hiera('domain_public')}:9001"
 
 #
 # DNS (merge of this and location)
@@ -193,6 +198,7 @@ profile::network::services::dns_records:
     "%{::location}-cephmon-02.%{hiera('domain_mgmt')}":     "%{hiera('netcfg_mgmt_netpart')}.92"
     "%{::location}-cephmon-03.%{hiera('domain_mgmt')}":     "%{hiera('netcfg_mgmt_netpart')}.93"
     "%{::location}-metric-01.%{hiera('domain_mgmt')}":      "%{hiera('netcfg_mgmt_netpart')}.96"
+    "%{::location}-name-01.%{hiera('domain_mgmt')}":        "%{hiera('netcfg_mgmt_netpart')}.97"
     "%{::location}-controller-01.%{hiera('domain_mgmt')}":  "%{hiera('netcfg_mgmt_netpart')}.100"
     "%{::location}-controller-02.%{hiera('domain_mgmt')}":  "%{hiera('netcfg_mgmt_netpart')}.101"
     "%{::location}-controller-03.%{hiera('domain_mgmt')}":  "%{hiera('netcfg_mgmt_netpart')}.102"
@@ -242,6 +248,7 @@ profile::network::services::dns_records:
     "identity.%{hiera('domain_trp')}":                      "%{hiera('netcfg_trp_netpart')}.86"
     "object.%{hiera('domain_trp')}":                        "%{hiera('netcfg_trp_netpart')}.86"
     "metric.%{hiera('domain_trp')}":                        "%{hiera('netcfg_trp_netpart')}.96"
+    "name.%{hiera('domain_trp')}":                          "%{hiera('netcfg_trp_netpart')}.97"
 
 #
 # Network configuration data

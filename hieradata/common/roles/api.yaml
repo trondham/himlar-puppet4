@@ -29,7 +29,7 @@ profile::highavailability::loadbalancing::haproxy::manage_haproxy:  true
 profile::highavailability::loadbalancing::haproxy::manage_firewall: true
 profile::highavailability::loadbalancing::haproxy::firewall_ports:
   public:    ['5000', '8041', '8774', '8776', '9292', '9696', '80', '443', '6082', '8080']
-  internal:  ['5000', '8041', '8774', '8776', '9292', '9696', '35357', '8080']
+  internal:  ['5000', '8041', '8774', '8776', '9292', '9696', '35357', '8080', '9001']
   mgmt:      ['9000']
 
 # HAproxy
@@ -80,6 +80,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_mapfile:
       - "volume.%{hiera('domain_trp')}:8776":           'bk_volume'
       - "image.%{hiera('domain_trp')}:9292":            'bk_image'
       - "object.%{hiera('domain_trp')}:8080":           'bk_object'
+      - "name.%{hiera('domain_trp')}:9001":             'bk_name'
 
 # HAproxy backends: public, internal and haproxy monitor
 profile::highavailability::loadbalancing::haproxy::haproxy_frontends:
@@ -95,6 +96,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_frontends:
       "%{::ipaddress_public1}:443":   ['ssl', 'crt', "%{hiera('status_ssl_pem')}"]
       "%{::ipaddress_public1}:80":    []
       "%{::ipaddress_public1}:6082":  ['ssl', 'crt', "%{hiera('console_ssl_pem')}"]
+      "%{::ipaddress_public1}:9001":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}"]
     options:
       - capture:        'request header Host len 64' #for debug
       - http-request:
@@ -241,6 +243,12 @@ profile::highavailability::loadbalancing::haproxy::haproxy_balancermembers:
     ipaddresses:        ["%{hiera('netcfg_trp_netpart')}.56"]
     ports:              '80'
     options:            'check'
+  name:
+    listening_service:  'bk_name'
+    server_names:       ['%{::location}-name-01']
+    ipaddresses:        ["%{hiera('netcfg_trp_netpart')}.97"]
+    ports:              '9001'
+    options:            'check'
 
 # SELinux - open ports for HAproxy
 profile::base::selinux::ports:
@@ -276,6 +284,11 @@ profile::base::selinux::ports:
     seltype:  'http_port_t'
     protocol: 'tcp'
     port:     6082
+  name-http:
+    context:  'http_port_t'
+    protocol: 'tcp'
+    port:     9001
+    argument: '-m'
 
 # Errorpage for api, not used for status!
 profile::highavailability::loadbalancing::haproxy::haproxy_errorpage:
