@@ -21,6 +21,8 @@ class profile::openstack::designate (
   include ::designate::mdns
   include ::designate::sink
   include ::designate::config
+  include ::designate::producer
+  include ::designate::worker
 
   class { selinux:
     mode => 'enforcing',

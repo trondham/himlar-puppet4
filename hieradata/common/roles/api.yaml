@@ -285,10 +285,9 @@ profile::base::selinux::ports:
     protocol: 'tcp'
     port:     6082
   name-http:
-    context:  'http_port_t'
+    seltype:  'http_port_t'
     protocol: 'tcp'
     port:     9001
-    argument: '-m'
 
 # Errorpage for api, not used for status!
 profile::highavailability::loadbalancing::haproxy::haproxy_errorpage:
