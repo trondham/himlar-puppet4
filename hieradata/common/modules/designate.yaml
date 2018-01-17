@@ -5,7 +5,7 @@ designate::db::mysql::allowed_hosts:
   - '%'
 
 # Logging via syslog
-designate::use_syslog: true
+#designate::use_syslog: true
 
 #---------------------------------------------------------------------
 # RabbitMQ
