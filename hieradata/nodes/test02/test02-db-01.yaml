@@ -32,5 +32,3 @@ profile::monitoring::sensu::agent::checks:
     command:      "check-wsrep-ready.rb -u sensu -h localhost -p %{hiera('sensu_mysql_password')}"
     interval:     60
     subscribers:  ['checks']
-
-puppet::puppetmaster: "puppet4.%{hiera('domain_mgmt')}"

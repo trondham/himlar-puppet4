@@ -22,5 +22,3 @@ network::interfaces_hash:
     netmask:   "%{hiera('netcfg_trp_netmask')}"
     gateway:   "%{hiera('netcfg_trp_gateway')}"
     defroute:  'no'
-
-puppet::puppetmaster: "puppet4.%{hiera('domain_mgmt')}"
