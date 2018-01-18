@@ -68,7 +68,9 @@ nodesets:
     #  box:        "norcams/freebsd"
     #- role:       "admin"
     #  memory:     3096
-    #
+    # To use leaf see cumulus help below
+    #- role:       "leaf"
+    #  box:        "norcams/net"
   ha:
     - role:       'ha'
       hostid:     '01'
@@ -108,3 +110,9 @@ networks:
     net: "192.168.0"
     auto_config: false
     forwarding: "route"
+
+#
+# To use cumulus in vagrant:
+#
+# Install gcc-c++
+# Then run: vagrant plugin install vagrant-cumulus
