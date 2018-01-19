@@ -26,7 +26,6 @@ mod 'ipmi', :ref => 'v2.3.0',                       :git => github + 'jhoblitt/p
 mod 'lldp', :ref => '1208d86c05',                   :git => github + 'mfournier/puppet-lldp'
 # mod 'apt', :ref => '2.2.2',                         :git => github + 'puppetlabs/puppetlabs-apt'
 mod 'selinux', :ref => 'v1.3.0',                    :git => github + 'voxpupuli/puppet-selinux'
-mod 'designate', :ref => '10.3.1',                  :git => github + 'openstack/puppet-designate'
 
 #
 # FreeBSD spesific
@@ -160,6 +159,7 @@ mod 'horizon', :ref => '9.6.0',                     :git => github + 'openstack/
 mod 'keystone', :ref => 'norcams/newton',           :git => github + 'norcams/puppet-keystone'
 mod 'gnocchi', :ref => '9.5.0',                     :git => github + 'openstack/puppet-gnocchi'
 mod 'swift', :ref => '9.6.0',                       :git => github + 'openstack/puppet-swift'
+mod 'designate', :ref => '10.3.1',                  :git => github + 'openstack/puppet-designate'
 
 mod 'oslo', :ref => '9.5.0',                        :git => github + 'openstack/puppet-oslo'
 mod 'openstacklib', :ref => '9.5.0',                :git => github + 'openstack/puppet-openstacklib'
