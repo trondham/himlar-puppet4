@@ -220,7 +220,8 @@ class profile::base::network(
         exec { "cl-mgmtvrf --enable":
           path   => "/usr/bin:/usr/sbin:/bin",
           unless => "cl-mgmtvrf --status",
-          onlyif => [ 'test -e /etc/network/interfaces.d/eth0', 'test -e /etc/network/if-up.d/z90-route-eth0' ]
+          onlyif => [ 'test -e /etc/network/interfaces.d/eth0', 'test -e /etc/network/if-up.d/z90-route-eth0' ],
+          require => Package['cl-mgmtvrf']
         }
       }
       '3': {

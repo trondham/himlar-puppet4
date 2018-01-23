@@ -15,5 +15,3 @@ network::interfaces_hash:
     netmask:   "%{hiera('netcfg_trp_netmask')}"
     defroute:  'no'
     mtu:       '1500'
-
-puppet::puppetmaster: "puppet4.%{hiera('domain_mgmt')}"

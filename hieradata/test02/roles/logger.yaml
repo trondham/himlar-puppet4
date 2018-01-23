@@ -1,2 +1,15 @@
 ---
 profile::base::common::manage_lvm: true
+
+
+profile::base::lvm::logical_volume:
+  'lv_els':
+    volume_group: 'vg_log'
+    fs_type:      "xfs"
+    mountpath:    "/opt/els"
+    size:         '20G'
+  'lv_log':
+    volume_group: 'vg_log'
+    fs_type:      "xfs"
+    mountpath:    "/opt/log"
+

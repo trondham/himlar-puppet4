@@ -13,7 +13,6 @@ class profile::openstack::dashboard(
   $custom_uploaddir     = '/image-upload',
   $enable_pwd_retrieval = false,
   $enable_designate     = false,
-  $enable_image_upload  = false,
   $image_upload_mode    = undef,
   $change_region_selector = false
 ) {

@@ -40,7 +40,7 @@ mod 'googleauthenticator', :ref => 'norcams-2.0.1', :git => github + 'norcams/pu
 #
 # profile::network::leaf
 #
-mod 'quagga', :ref => '4f7cac717c',                 :git => github + 'norcams/puppet-quagga'
+mod 'quagga', :ref => '2ca9c002a8',                 :git => github + 'norcams/puppet-quagga'
 
 #
 # profile::network::
@@ -50,7 +50,7 @@ mod 'calico', :ref => 'fc4e5c95cf',                 :git => github + 'norcams/pu
 mod 'dnsmasq', :ref => 'v1.3.1',                    :git => github + 'saz/puppet-dnsmasq'
 mod 'ipcalc', :ref => '2.2.0',                      :git => github + 'inkblot/puppet-ipcalc'
 mod 'tinyproxy', :ref => 'ef4a8b0bb2',              :git => github + 'earsdown/puppet-tinyproxy'
-mod 'interfaces', :ref => '1.2.2',                  :git => github + 'CumulusNetworks/cumulus-cl-interfaces-puppet'
+mod 'cumuluslinux-cumulus_interfaces', :ref => '1.2.2', :git => github + 'CumulusNetworks/cumulus-cl-interfaces-puppet'
 
 #
 # profile::application::etcd

@@ -58,20 +58,24 @@ bootstrap_puppet()
     yum install -y puppet-agent rubygems git vim inotify-tools
     # Remove default version 3 hiera.yaml
     rm -f /etc/puppetlabs/puppet/hiera.yaml
+
+    gem install -N puppet_forge -v 2.2.6
+    gem install -N r10k
   fi
 
   if command -v apt-get >/dev/null 2>&1; then
     # Assume Debian/CumulusLinux
-    apt-get -y install ca-certificates
-    wget https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb
-    dpkg -i puppetlabs-release-wheezy.deb
-    apt-get update && apt-get -y install puppet git ruby-deep-merge ruby-puppet-lint
-    # FIXME adding wheel group here temporarily
-    groupadd --system wheel
-  fi
 
-  gem install -N puppet_forge -v 2.2.6
-  gem install -N r10k
+    # Fix annoying debian thing
+    sed -i 's/^mesg n$/tty -s \&\& mesg n/g' /root/.profile
+
+    wget -O /tmp/puppetlabs-release-pc1-wheezy.deb http://apt.puppetlabs.com/puppetlabs-release-pc1-wheezy.deb
+    dpkg -i /tmp/puppetlabs-release-pc1-wheezy.deb
+    apt-get update
+    apt-get -y install puppet-agent git
+
+    gem install --no-ri --no-rdoc r10k
+  fi
 
   # Let puppetrun.sh pick up that we are now in bootstrap mode
   touch /opt/himlar/bootstrap && echo "Created bootstrap marker: /opt/himlar/bootstrap"
