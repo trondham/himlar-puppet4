@@ -6,7 +6,7 @@ profile::base::lvm::logical_volume:
     volume_group: 'vg_log'
     fs_type:      "xfs"
     mountpath:    "/opt/els"
-    size:         '10G'
+    size:         '20G'
   'lv_log':
     volume_group: 'vg_log'
     fs_type:      "xfs"
