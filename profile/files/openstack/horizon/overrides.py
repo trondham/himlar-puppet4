@@ -17,7 +17,6 @@ project_dashboard = horizon.get_dashboard("project")
 container_panel = project_dashboard.get_panel("containers")
 permissions = list()
 permissions.append('openstack.roles.object')
-permissions.append('openstack.roles.admin')
 container_panel.permissions = tuple(permissions)
 
 # Hide panel Network->Routers
