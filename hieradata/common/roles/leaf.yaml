@@ -55,6 +55,9 @@ openstack_extras::repo::debian::debian::source_hash:
   'wheezy':
     'location': 'http://ftp.us.debian.org/debian/'
     'repos':    'main contrib non-free'
+  'uh-iaas':
+    'location': 'https://download.iaas.uio.no/uh-iaas/aptrepo/'
+    'repos':    'main'
 
 profile::base::common::packages:
   'vim-enhanced': { 'ensure': 'absent', }
