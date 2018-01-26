@@ -18,6 +18,10 @@ class profile::openstack::compute::hypervisor (
     fail("Invalid hypervisor_type selected: ${hypervisor_type}")
   }
 
+  if $hypervisor_type in ['libvirt'] {
+    include ::nova::migration::libvirt
+  }
+
   if $manage_libvirt_rbd {
     include ::nova::compute::rbd
   }
@@ -33,8 +37,14 @@ class profile::openstack::compute::hypervisor (
       extras => $firewall_extras,
     }
     profile::firewall::rule{ '224 migration accept tcp':
-      dport  => ['16509', '49152-49215'],
+      dport  => '49152-49215',
       extras => $firewall_extras,
+      source => "${::network_live1}/${::netmask_live1}",
+    }
+    profile::firewall::rule{ '224-1 migration accept tcp':
+      dport  => '16509',
+      extras => $firewall_extras,
+      source => "${::network_live1}/${::netmask_live1}",
     }
   }
 
