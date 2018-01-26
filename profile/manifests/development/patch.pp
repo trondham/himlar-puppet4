@@ -3,7 +3,7 @@ class profile::development::patch (
   $role     = $::role,
   $flagfile = '/var/tmp/system-patched',
   $patchdir = '/opt/himlar/provision/patches',
-) 
+)
 
 {
   exec { 'patch_system':
