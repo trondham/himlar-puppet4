@@ -1,15 +1,16 @@
 class profile::openstack::database::sql (
-  $keystone_enabled  = true,
-  $glance_enabled    = true,
-  $nova_enabled      = true,
-  $neutron_enabled   = true,
+  $keystone_enabled = true,
+  $glance_enabled   = true,
+  $nova_enabled     = true,
+  $neutron_enabled  = true,
   $designate_enabled = true,
-  $heat_enabled      = false,
-  $trove_enabled     = false,
-  $cinder_enabled    = false,
-  $gnocchi_enabled   = false,
-  $create_cell0      = false,
-  $database          = 'mariadb',
+  $heat_enabled     = false,
+  $trove_enabled    = false,
+  $cinder_enabled   = false,
+  $gnocchi_enabled  = false,
+  $ceilometer_enabled = false,
+  $create_cell0     = false,
+  $database         = 'mariadb',
 ) {
 
   if $database in ['mariadb', 'postgresql'] {
@@ -77,6 +78,10 @@ class profile::openstack::database::sql (
 
   if $gnocchi_enabled {
     include ::gnocchi::db::mysql
+  }
+
+  if $ceilometer_enabled {
+    include ::ceilometer::db::mysql
   }
 
 }

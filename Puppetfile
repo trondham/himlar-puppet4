@@ -160,6 +160,7 @@ mod 'keystone', :ref => 'norcams/newton',           :git => github + 'norcams/pu
 mod 'gnocchi', :ref => '9.5.0',                     :git => github + 'openstack/puppet-gnocchi'
 mod 'swift', :ref => '9.6.0',                       :git => github + 'openstack/puppet-swift'
 mod 'designate', :ref => '10.3.1',                  :git => github + 'openstack/puppet-designate'
+mod 'ceilometer', :ref => '9.5.0',                  :git => github + 'openstack/puppet-ceilometer'
 
 mod 'oslo', :ref => '9.5.0',                        :git => github + 'openstack/puppet-oslo'
 mod 'openstacklib', :ref => '9.5.0',                :git => github + 'openstack/puppet-openstacklib'

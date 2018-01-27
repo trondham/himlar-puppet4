@@ -23,8 +23,14 @@ class profile::base::network(
 
   if $manage_hostname {
     $domain_mgmt = lookup('domain_mgmt', String, 'first', $::domain)
-    $hostname = "${::hostname}.${domain_mgmt}"
-    if $::osfamily == 'RedHat' {
+    $hostname = "${::verified_host}.${domain_mgmt}"
+    if fact('os.distro.codename') == 'wheezy' {
+      file { '/etc/hostname':
+        ensure  => 'file',
+        mode    => '0644',
+        content => "${hostname}\n"
+      }
+    } elsif $::osfamily == 'RedHat' {
       exec { 'himlar_sethostname':
         command => "/usr/bin/hostnamectl set-hostname ${hostname}",
         unless  => "/usr/bin/hostnamectl status | grep 'Static hostname: ${hostname}'",

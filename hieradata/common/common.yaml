@@ -79,6 +79,8 @@ allow_from_network:
   - '158.39.17.0/25'     # UiT ita
   - '158.39.93.0/27'     # UiT ita
   - '158.39.87.96/28'    # UiT ita
+  - '77.88.125.0/24'     # Kvantel (Simula/IFI project)
+  - '158.39.4.0/24'      # NorNett/UNINETT (Simula/IFI project)
 
 #
 # Default interfaces
@@ -162,6 +164,8 @@ endpoint__object__public:         "https://object.api.%{hiera('domain_public')}:
 endpoint__designate__admin:       "http://name.%{hiera('domain_trp')}:9001"
 endpoint__designate__internal:    "http://name.%{hiera('domain_trp')}:9001"
 endpoint__designate__public:      "https://designate.api.%{hiera('domain_public')}:9001"
+endpoint__telemetry__admin:       "http://telemetry.%{hiera('domain_trp')}:8777"
+endpoint__telemetry__internal:    "http://telemetry.%{hiera('domain_trp')}:8777"
 
 #
 # DNS (merge of this and location)
@@ -191,6 +195,7 @@ profile::network::services::dns_records:
     "%{::location}-network-01.%{hiera('domain_mgmt')}":     "%{hiera('netcfg_mgmt_netpart')}.71"
     "%{::location}-network-02.%{hiera('domain_mgmt')}":     "%{hiera('netcfg_mgmt_netpart')}.72"
     "%{::location}-network-03.%{hiera('domain_mgmt')}":     "%{hiera('netcfg_mgmt_netpart')}.73"
+    "%{::location}-telemetry-01.%{hiera('domain_mgmt')}":   "%{hiera('netcfg_mgmt_netpart')}.76"
     "%{::location}-identity-01.%{hiera('domain_mgmt')}":    "%{hiera('netcfg_mgmt_netpart')}.81"
     "%{::location}-api-01.%{hiera('domain_mgmt')}":         "%{hiera('netcfg_mgmt_netpart')}.86"
     "%{::location}-cephmon-01.%{hiera('domain_mgmt')}":     "%{hiera('netcfg_mgmt_netpart')}.91"
@@ -238,6 +243,7 @@ profile::network::services::dns_records:
     "db01.%{hiera('domain_trp')}":                          "%{hiera('netcfg_trp_netpart')}.41"
     "db02.%{hiera('domain_trp')}":                          "%{hiera('netcfg_trp_netpart')}.42"
     "%{::location}-access-01.%{hiera('domain_trp')}":       "%{hiera('netcfg_trp_netpart')}.56"
+    "telemetry.%{hiera('domain_trp')}":                     "%{hiera('netcfg_trp_netpart')}.76"
     "image.%{hiera('domain_trp')}":                         "%{hiera('netcfg_trp_netpart')}.86"
     "volume.%{hiera('domain_trp')}":                        "%{hiera('netcfg_trp_netpart')}.86"
     "compute.%{hiera('domain_trp')}":                       "%{hiera('netcfg_trp_netpart')}.86"
