@@ -37,7 +37,7 @@ ceilometer::keystone::authtoken::admin_url:      "%{hiera('endpoint__telemetry__
 ceilometer::keystone::authtoken::internal_url:   "%{hiera('endpoint__telemetry__internal')}"
 
 # rabbit mq (for rabbit_password see secrets)
-ceilometer_rabbit_userid:			 'ceilometer'
+ceilometer_rabbit_userid:                        'ceilometer'
 ceilometer::notification_transport_url:
   "rabbit://%{hiera('ceilometer_rabbit_userid')}:%{hiera('ceilometer::rabbit_password')}@%{hiera('service__address__rabbitmq_01')}:5672,\
   %{hiera('ceilometer_rabbit_userid')}:%{hiera('ceilometer::rabbit_password')}@%{hiera('service__address__rabbitmq_02')}:5672,\
