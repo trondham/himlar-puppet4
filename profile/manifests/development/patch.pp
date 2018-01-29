@@ -7,9 +7,9 @@ class profile::development::patch (
 
 {
   exec { 'patch_system':
-    command => "/opt/himlar/provision/patches/patch.sh $role",
+    command => "/opt/himlar/provision/patches/patch.sh ${role}",
     path    => '/usr/bin:/usr/sbin:/bin',
-    cwd     => "$patchdir",
-    unless  => ["test -f $flagfile"],
+    cwd     => $patchdir,
+    unless  => ["test -f ${flagfile}"],
   }
 }
