@@ -9,6 +9,7 @@ puppet::
 puppet::server_directory_environments: true
 puppet::server_environments:           ['production']
 puppet::server_external_nodes:         ''
+puppet::server_foreman_facts:          true
 
 puppet::additional_settings:
   # 'basemodulepath'   : '/etc/puppetlabs/code/modules:/opt/himlar/modules'
