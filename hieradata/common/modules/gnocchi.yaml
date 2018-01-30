@@ -13,8 +13,11 @@ gnocchi::keystone::authtoken::admin_url:      "%{hiera('endpoint__metric__admin'
 gnocchi::keystone::authtoken::internal_url:   "%{hiera('endpoint__metric__internal')}"
 gnocchi::keystone::authtoken::region_name:    "%{::location}"
 
-# db (node: volume)
+# db (node: metric)
 gnocchi::database_connection:      "mysql://gnocchi:%{hiera('gnocchi::db::mysql::password')}@%{hiera('service__address__mysql')}/gnocchi"
+
+# api (node: metric)
+gnocchi::api::sync_db:                        true
 
 gnocchi::db::mysql::dbname:   'gnocchi'
 gnocchi::db::mysql::user:     'gnocchi'

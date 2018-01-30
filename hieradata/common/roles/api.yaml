@@ -187,7 +187,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_balancermembers:
     listening_service:  'bk_metric'
     server_names:       ['%{::location}-metric-01']
     ipaddresses:        ["%{hiera('netcfg_trp_netpart')}.96"]
-    ports:              '8041'
+    ports:              '8000' # gnocchi service not apache wsgi
     options:            'check'
   compute:
     listening_service:  'bk_compute'
@@ -256,6 +256,10 @@ profile::base::selinux::ports:
     seltype:  'http_port_t'
     protocol: 'tcp'
     port:     8041
+  metric-backend:
+    seltype:  'http_port_t'
+    protocol: 'tcp'
+    port:     8000
   compute-http:
     seltype:  'http_port_t'
     protocol: 'tcp'

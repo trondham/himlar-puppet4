@@ -1,4 +1,7 @@
-class profile::openstack::gnocchi (
+#
+# Setup metric role with gnocchi
+#
+class profile::openstack::metric (
   $manage_firewall   = false,
   $firewall_extras   = {},
 )  {

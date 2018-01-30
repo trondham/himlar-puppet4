@@ -1,7 +1,7 @@
 ---
 include:
   default:
-    - profile::openstack::gnocchi
+    - profile::openstack::metric
     - profile::openstack::openrc
 
 
@@ -13,8 +13,7 @@ profile::base::yumrepo::repo_hash:
 profile::base::common::packages:
   'python-openstackclient': {}
 
-profile::openstack::gnocchi::manage_firewall:       true
-gnocchi::api::sync_db:                              true
+profile::openstack::metric::manage_firewall:       true
 
 profile::openstack::openrc::password:     "%{hiera('gnocchi_api_password')}"
 profile::openstack::openrc::username:     'gnocchi'
