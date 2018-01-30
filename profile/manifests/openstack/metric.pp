@@ -19,8 +19,8 @@ class profile::openstack::metric (
   include ::gnocchi::statsd
 
   if $manage_firewall {
-    profile::firewall::rule { '123 metric accept tcp':
-      port        => 8041,
+    profile::firewall::rule { '123 metric api accept tcp':
+      port        => 8000,
       proto       => 'tcp',
       destination => $::ipaddress_trp1,
       extras      => $firewall_extras,
