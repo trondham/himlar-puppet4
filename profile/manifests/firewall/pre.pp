@@ -22,7 +22,7 @@ class profile::firewall::pre(
   $loopback_settings    = {},
   $ssh_settings         = {},
   $ipv6_ssh_settings    = {},
-  $manage_ipv6_ssh      = false.
+  $manage_ipv6_ssh      = false,
   $manage_ssh           = true,
 ){
 
