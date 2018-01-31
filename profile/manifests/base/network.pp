@@ -28,7 +28,12 @@ class profile::base::network(
       file { '/etc/hostname':
         ensure  => 'file',
         mode    => '0644',
-        content => "${hostname}\n"
+        content => "${hostname}\n",
+        notify  => Exec['set wheezy hostname']
+      }
+      exec { 'set wheezy hostname':
+        command     => "/bin/hostname ${hostname}",
+        refreshonly => true
       }
     } elsif $::osfamily == 'RedHat' {
       exec { 'himlar_sethostname':
