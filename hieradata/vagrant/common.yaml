@@ -59,9 +59,7 @@ named_interfaces::config:
     - eth1
   trp:
     - eth2
-  service: #FIXME (delete)
-    - eth2
-  transport: #FIXME (delete)
+  live:
     - eth2
   public:
     - eth3
