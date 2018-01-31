@@ -59,6 +59,8 @@ profile::network::nat::enable_snat6: true
 profile::network::nat::source6:      "%{hiera('netcfg_public_netpart6')}::/%{hiera('netcfg_public_netmask6')}"
 profile::network::nat::outiface:     'em4'
 
+profile::network::services::ntp_server: false
+
 lvm::volume_groups:
   vg_ext:
     physical_volumes:
