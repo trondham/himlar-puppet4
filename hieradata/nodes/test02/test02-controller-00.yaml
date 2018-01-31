@@ -136,3 +136,6 @@ ssh::server::options:
 # SSH from everywhere
 profile::firewall::pre::ssh_settings:
   source: "0.0.0.0/0"
+
+# SSH from ipv6
+profile::firewall::pre::manage_ipv6_ssh: true
