@@ -24,7 +24,7 @@ class profile::application::foreman(
     'tftp'   => {},
     'proxy'  => {},
   },
-  Boolean $push_facts      = false,
+  $push_facts      = false,
 ) {
 
   include ::puppet
@@ -56,7 +56,9 @@ class profile::application::foreman(
 
   # Push puppet facts to foreman
   cron { 'push-puppet-facts-to-foreman':
-    ensure  => $push_facts,
+    ensure  => $push_facts? {
+      true    => 'present',
+      default => 'absent' },
     command => '/etc/puppetlabs/puppet/node.rb --push-facts',
     minute  => '30',
     hour    => '*',
