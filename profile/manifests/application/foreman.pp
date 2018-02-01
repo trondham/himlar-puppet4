@@ -55,10 +55,12 @@ class profile::application::foreman(
   }
 
   # Push puppet facts to foreman
+  $push_facts_ensure = $push_facts? {
+    true    => 'present',
+    default => 'absent'
+  }
   cron { 'push-puppet-facts-to-foreman':
-    ensure  => $push_facts? {
-      true    => 'present',
-      default => 'absent' },
+    ensure  => $push_facts_ensure,
     command => '/etc/puppetlabs/puppet/node.rb --push-facts',
     minute  => '30',
     hour    => '*',
