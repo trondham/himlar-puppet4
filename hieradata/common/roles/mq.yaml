@@ -52,13 +52,10 @@ profile::messaging::rabbitmq::users:
   local:
     password: "%{hiera('local_rabbit_password')}"
     tags:     'monitoring'
-<<<<<<< HEAD
   designate:
     password: "%{hiera('designate::rabbit_password')}"
-=======
   ceilometer:
     password: "%{hiera('ceilometer::rabbit_password')}"
->>>>>>> master
 
 #  glance:
 #    password: "%{hiera('glance::rabbit_password')}"
