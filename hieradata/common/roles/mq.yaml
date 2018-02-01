@@ -103,8 +103,7 @@ profile::messaging::rabbitmq::user_permissions:
   'local@sensu':
     read_permission:      '.*'
   'designate@nova':
-    configure_permission: '.*'
-    write_permission:     '.*'
+    read_permission:      '.*'
   'local@ceilometer':
     read_permission:      '.*'
 
