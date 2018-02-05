@@ -290,6 +290,23 @@ networks:
         ensure: absent
       oob:
         ensure: absent
+  tos:
+    domain:
+      mgmt: mgmt.tos.uhdc.no
+      oob: oob.tos.uhdc.no
+    subnet:
+      mgmt: 172.16.64.0/21
+      oob: 172.17.64.0/21
+    dhcp:
+      mgmt:
+        ensure: absent
+      oob:
+        ensure: absent
+    nat:
+      mgmt:
+        ensure: absent
+      oob:
+        ensure: absent
   trd:
     domain:
       mgmt: iaas.ntnu.no
