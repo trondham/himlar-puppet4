@@ -8,12 +8,12 @@ include:
 profile::base::common::packages:
   'python-openstackclient': {}
 
-profile::openstack::metric::manage_firewall:       true
-profile::openstack::metric::manage_wsgi:            true
+profile::openstack::metric::manage_firewall:  true
+profile::openstack::metric::manage_wsgi:      true
 
-profile::openstack::openrc::password:     "%{hiera('gnocchi_api_password')}"
-profile::openstack::openrc::username:     'gnocchi'
-profile::openstack::openrc::project_name: 'services'
+profile::openstack::openrc::password:         "%{hiera('gnocchi_api_password')}"
+profile::openstack::openrc::username:         'gnocchi'
+profile::openstack::openrc::project_name:     'services'
 
 # Enable extra yum repo
 profile::base::yumrepo::repo_hash:
