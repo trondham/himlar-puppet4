@@ -1,81 +1,18 @@
 ---
-include:
-  default:
-    - profile::virtualization::libvirt
-    - profile::bootstrap::himlar
-    - profile::network::services
+# Turn off bird on controller until we use cumulus
+profile::openstack::network::calico::manage_bird: false
 
-named_interfaces::config:
-  mgmt:
-     - br0
-  trp:
-     - br1
-
-calico::compute::manage_dhcp_agent: false
-calico::compute::manage_metadata_service: false
-calico::compute::felix_enable: false
-calico::compute::manage_qemu_settings: false
-calico::compute::bird_template: 'profile/bird/bird.conf.erb'
-
-libvirt::qemu_cgroup_device_acl:
-  - "/dev/null"
-  - "/dev/full"
-  - "/dev/zero"
-  - "/dev/random"
-  - "/dev/urandom"
-  - "/dev/ptmx"
-  - "/dev/kvm"
-  - "/dev/kqemu"
-  - "/dev/rtc"
-  - "/dev/hpet"
-  - "/dev/net/tun"
-libvirt::qemu_user: 'root'
-libvirt::qemu_group: 'root'
-libvirt::qemu_clear_emulator_capabilities: '0'
-
-profile::base::common::manage_lvm: true
-profile::base::common::packages:
-  'bridge-utils': {}
-  'bash-completion': {}
-  'bash-completion-extras': {}
-  'jq': {}
-
-profile::virtualization::libvirt::manage_firewall: true
-profile::virtualization::libvirt::firewall_extras:
-  'graphics':
-    port: 5900-5999
-
-profile::network::services::ntp_server: true
-
-profile::virtualization::libvirt::networks:
-  directnet:
-    ensure:              enabled
-    autostart:           true
-    forward_mode:        bridge
-    bridge:              br0
-  trpnet:
-    ensure:              enabled
-    autostart:           true
-    forward_mode:        bridge
-    bridge:              br1
-
-profile::virtualization::libvirt::pools:
-  dirpool:
-    ensure:              present
-    autostart:           true
-    type:                dir
-    target:              /var/lib/libvirt/images
-
-libvirt::unix_sock_group:         wheel
-libvirt::unix_sock_rw_perms:      0770
-libvirt::listen_tls:              false
-libvirt::listen_tcp:              true
-libvirt::auth_tcp:                none
-libvirt::sysconfig:
-  LIBVIRTD_ARGS:                  '--listen'
-libvirt::qemu_vnc_listen:         '0.0.0.0'
-libvirt::qemu_vnc_sasl:           false
-libvirt::qemu_vnc_tls:            false
+himlar_bootstrap::virt_install:
+  '%{location}-admin-01':
+    domain:          "%{hiera('domain_mgmt')}"
+    libvirt_pool:    'dirpool'
+    libvirt_network: 'directnet'
+    install_ip:      "%{hiera('netcfg_mgmt_netpart')}.11"
+    install_netmask: "%{hiera('netcfg_mgmt_netmask')}"
+    install_gateway: "%{hiera('netcfg_mgmt_gateway')}"
+    vm_vcpus:        2
+    vm_memory:       4096
+    vm_console:      false
 
 lvm::volume_groups:
   vg_ext:
@@ -85,9 +22,3 @@ lvm::volume_groups:
       lv_ext:
         fs_type:   xfs
         mountpath: "/var/lib/libvirt/images"
-
-consul::config_hash:
-  'server': true
-  'ui_dir': '/opt/consul/ui'
-  'ports':
-    'https': '8550'
