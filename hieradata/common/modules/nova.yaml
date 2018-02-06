@@ -32,7 +32,7 @@ nova::keystone::auth::internal_url:     "%{hiera('endpoint__compute__internal')}
 # api (node: novactrl)
 nova::api::enabled_apis:                [ 'osapi_compute', ]
 nova::api::enabled:                     true
-nova::api::api_bind_address:            "%{ipaddress_transport1}"
+nova::api::api_bind_address:            "%{ipaddress_trp1}"
 
 nova::cells::enabled: false
 
