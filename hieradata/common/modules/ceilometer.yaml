@@ -15,10 +15,7 @@ ceilometer::dispatcher::gnocchi::filter_servcie_activity:       'false'
 ceilometer::dispatcher::gnocchi::archive_policy:                'low'
 
 ceilometer::wsgi::apache::ssl:                                  false
-ceilometer::api::enabled:                                       true
-ceilometer::api::service_name:                                  'httpd'
-ceilometer::api::polling::compute_namespace:                    false
-ceilometer::api::polling::instance_discovery_method:            'libvirt_metadata'
+ceilometer::api::enabled:                                       false
 
 # keystone auth (node: ceilometer)
 ceilometer::agent::auth::auth_password:          "%{hiera('ceilometer_api_password')}"
