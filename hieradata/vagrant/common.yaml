@@ -180,12 +180,12 @@ profile::network::services::dns_records:
     "116.%{hiera('reverse_mgmt')}":    "%{::location}-compute-08.%{hiera('domain_mgmt')}"
     # public IPv4
     "250.%{hiera('reverse_public')}":   "api.%{hiera('domain_public')}"
-    "251.%{hiera('reverse_public')}":   "ns.%{hiera('domain_public')}"
-    "252.%{hiera('reverse_public')}":   "nsa.%{hiera('domain_public')}"
+    "251.%{hiera('reverse_public')}":   "nsa.%{hiera('domain_public')}"
+    "252.%{hiera('reverse_public')}":   "ns.%{hiera('domain_public')}"
     "254.%{hiera('reverse_public')}":   "dashboard.%{hiera('domain_frontend')}"
     # public IPv6
-    "1.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.%{hiera('reverse_public6')}":  "ns.%{hiera('domain_public')}"
-    "2.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.%{hiera('reverse_public6')}":  "nsa.%{hiera('domain_public')}"
+    "1.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.%{hiera('reverse_public6')}":  "nsa.%{hiera('domain_public')}"
+    "2.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.%{hiera('reverse_public6')}":  "ns.%{hiera('domain_public')}"
 
 #
 ## Secret data which for other environments are stored ooutside of this data tree
