@@ -8,9 +8,8 @@
 <% if @authoritative %>
 include "/etc/rndc-mdns.key";
 include "/etc/rndc-admin.key";
-<% else %>
-include "/etc/rndc-authoritative.key";
 <% end -%>
+include "/etc/rndc-authoritative.key";
 
 # Define an ACL that includes all UH-IaaS networks
 acl iaas_nets {
