@@ -1,9 +1,10 @@
 class profile::dns::rndc_key (
-  $create_admin_key    = false,
-  $create_mdns_key     = false,
-  $host_is_bind_server = false,
-  $rndc_secret_admin   = undef,
-  $rndc_secret_mdns    = undef
+  $create_admin_key         = false,
+  $create_mdns_key          = false,
+  $create_authoritative_key = false,
+  $host_is_bind_server      = false,
+  $rndc_secret_admin        = undef,
+  $rndc_secret_mdns         = undef
 )
 {
 
@@ -42,6 +43,27 @@ class profile::dns::rndc_key (
     else {
       file { '/etc/rndc-mdns.key':
         content => template("${module_name}/dns/bind/rndc-mdns.key.erb"),
+        mode    => '0640',
+        owner   => 'root',
+        group   => 'named',
+      }
+    }
+  }
+
+  if $create_authoritative_key {
+    if $host_is_bind_server {
+      file { '/etc/rndc-authoritative.key':
+        content => template("${module_name}/dns/bind/rndc-authoritative.key.erb"),
+        notify  => Service['named'],
+        mode    => '0640',
+        owner   => 'named',
+        group   => 'named',
+        require => Package['bind'],
+      }
+    }
+    else {
+      file { '/etc/rndc-authoritative.key':
+        content => template("${module_name}/dns/bind/rndc-authoritative.key.erb"),
         mode    => '0640',
         owner   => 'root',
         group   => 'named',
