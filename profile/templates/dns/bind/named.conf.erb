@@ -30,7 +30,7 @@ controls  {
     inet <%= @my_mgmt_addr %> port 953 allow { <%= @admin_mgmt_addr %>; } keys { "rndc-key-admin"; };
     #inet <%= @my_transport_addr %> port 953 allow { <%= @mdns_transport_addr %>; } keys { "rndc-key-mdns"; };
 <% else %>
-    inet 127.0.0.1 port 953 allow { 127.0.0.1; } keys { "rndc-key-admin"; };
+    inet 127.0.0.1 port 953 allow { 127.0.0.1; } keys { "rndc-key-authoritative"; };
     inet <%= @my_mgmt_addr %> port 953 allow { <%= @ns1_mgmt_addr %>; } keys { "rndc-key-authoritative"; };
     inet <%= @my_transport_addr %> port 953 allow { <%= @ns1_transport_addr %>; } keys { "rndc-key-authoritative"; };
 <% end -%>
