@@ -5,9 +5,12 @@ class profile::dns::ns (
   $admin_mgmt_addr = {},
   $ns1_mgmt_addr = {},
   $ns2_mgmt_addr = {},
+  $ns3_mgmt_addr = {},
   $ns1_transport_addr = {},
+  $ns2_transport_addr = {},
   $ns1_public_addr = {},
-  $master = {},
+  $ns2_public_addr = {},
+  $authoritative = {},
   $manage_firewall = {},
   $firewall_extras = {},
   $internal_zone = {}
@@ -80,8 +83,8 @@ class profile::dns::ns (
       ],
   }
 
-  # Create the zones (on master)
-  if $master {
+  # Create the zones (on authoritative host)
+  if $authoritative {
     create_resources('profile::dns::forward_zone', $forward_zones)
     create_resources('profile::dns::reverse_zone', $reverse_zones)
   }

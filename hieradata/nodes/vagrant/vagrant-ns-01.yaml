@@ -1,5 +1,5 @@
 ---
-profile::dns::ns::master: true
+profile::dns::ns::authoritative: true
 profile::dns::ns::my_mgmt_addr:      "%{hiera('netcfg_mgmt_netpart')}.16"
 profile::dns::ns::my_transport_addr: "%{hiera('netcfg_trp_netpart')}.16"
 profile::dns::ns::zonedir: 'pz'
@@ -18,6 +18,6 @@ network::interfaces_hash:
   'eth3':
     onboot:    'yes'
     mtu:       '1500'
-    ipaddress: "%{hiera('netcfg_public_netpart')}.16"
+    ipaddress: "%{hiera('netcfg_public_netpart')}.251"
     netmask:   "%{hiera('netcfg_public_netmask')}"
     defroute:  'no'

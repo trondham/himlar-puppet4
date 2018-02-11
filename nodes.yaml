@@ -97,6 +97,8 @@ nodesets:
       hostid:     "01"
     - role:       "ns"
       hostid:     "02"
+    - role:       "ns"
+      hostid:     "03"
 
 networks:
   mgmt:

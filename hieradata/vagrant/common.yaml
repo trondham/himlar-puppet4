@@ -114,8 +114,6 @@ profile::network::services::dns_options:
 #
 profile::network::services::dns_records:
   A:
-    "ns.%{hiera('domain_public')}":                       "%{hiera('netcfg_public_netpart')}.16"
-    "dashboard.%{hiera('domain_frontend')}":              "%{hiera('netcfg_public_netpart')}.254"
     "access.%{hiera('domain_frontend')}":                 "%{hiera('netcfg_public_netpart')}.250"
     "console.%{hiera('domain_public')}":                  "%{hiera('netcfg_public_netpart')}.250"
     "api.%{hiera('domain_public')}":                      "%{hiera('netcfg_public_netpart')}.250"
@@ -127,8 +125,12 @@ profile::network::services::dns_records:
     "status.%{hiera('domain_frontend')}":                 "%{hiera('netcfg_public_netpart')}.250"
     "metric.api.%{hiera('domain_public')}":               "%{hiera('netcfg_public_netpart')}.250"
     "object.api.%{hiera('domain_public')}":               "%{hiera('netcfg_public_netpart')}.250"
+    "ns.%{hiera('domain_public')}":                       "%{hiera('netcfg_public_netpart')}.251"
+    "nsa.%{hiera('domain_public')}":                      "%{hiera('netcfg_public_netpart')}.252"
+    "dashboard.%{hiera('domain_frontend')}":              "%{hiera('netcfg_public_netpart')}.254"
   AAAA:
-    "ns.%{hiera('domain_public')}":                       "%{hiera('netcfg_public_netpart6')}::16"
+    "ns.%{hiera('domain_public')}":                       "%{hiera('netcfg_public_netpart6')}::251"
+    "nsa.%{hiera('domain_public')}":                      "%{hiera('netcfg_public_netpart6')}::252"
   PTR:
     # mgmt
     "1.%{hiera('reverse_mgmt')}":      "%{::location}-leaf-01.%{hiera('domain_mgmt')}"
@@ -139,6 +141,7 @@ profile::network::services::dns_records:
     "15.%{hiera('reverse_mgmt')}":     "%{::location}-builder-01.%{hiera('domain_mgmt')}"
     "16.%{hiera('reverse_mgmt')}":     "%{::location}-ns-01.%{hiera('domain_mgmt')}"
     "17.%{hiera('reverse_mgmt')}":     "%{::location}-ns-02.%{hiera('domain_mgmt')}"
+    "18.%{hiera('reverse_mgmt')}":     "%{::location}-ns-03.%{hiera('domain_mgmt')}"
     "21.%{hiera('reverse_mgmt')}":     "%{::location}-status-01.%{hiera('domain_mgmt')}"
     "26.%{hiera('reverse_mgmt')}":     "%{::location}-nat-01.%{hiera('domain_mgmt')}"
     "31.%{hiera('reverse_mgmt')}":     "%{::location}-mq-01.%{hiera('domain_mgmt')}"
@@ -175,14 +178,14 @@ profile::network::services::dns_records:
     "114.%{hiera('reverse_mgmt')}":    "%{::location}-controller-04.%{hiera('domain_mgmt')}"
     "115.%{hiera('reverse_mgmt')}":    "%{::location}-compute-07.%{hiera('domain_mgmt')}"
     "116.%{hiera('reverse_mgmt')}":    "%{::location}-compute-08.%{hiera('domain_mgmt')}"
-    # public
-    "16.%{hiera('reverse_public')}":    "ns.%{hiera('domain_public')}"
-    "254.%{hiera('reverse_public')}":   "dashboard.%{hiera('domain_frontend')}"
-    #"250.%{hiera('reverse_public')}":   "access.%{hiera('domain_frontend')}" #252
-    #"250.%{hiera('reverse_public')}":   "console.%{hiera('domain_public')}" #251
+    # public IPv4
     "250.%{hiera('reverse_public')}":   "api.%{hiera('domain_public')}"
+    "251.%{hiera('reverse_public')}":   "ns.%{hiera('domain_public')}"
+    "252.%{hiera('reverse_public')}":   "nsa.%{hiera('domain_public')}"
+    "254.%{hiera('reverse_public')}":   "dashboard.%{hiera('domain_frontend')}"
     # public IPv6
-    "6.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.%{hiera('reverse_public6')}":  "ns.%{hiera('domain_public')}"
+    "1.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.%{hiera('reverse_public6')}":  "ns.%{hiera('domain_public')}"
+    "2.5.2.0.0.0.0.0.0.0.0.0.0.0.0.0.%{hiera('reverse_public6')}":  "nsa.%{hiera('domain_public')}"
 
 #
 ## Secret data which for other environments are stored ooutside of this data tree
@@ -279,8 +282,9 @@ dispersion_api_password:                            'dispersion_pass'
 accounts::root_user::password:                      '$1$vagrant$z3l/WWbF3HllJk0tnqO3i/'
 
 # rndc keys
-profile::dns::rndc_key::rndc_secret_admin: '5n5fC0m42JovwO9PJMTQYaNP7j5UcRjmL0Lsq4JXz8eZIrGILt/5Lo+MVzdr31GbYn9C/fPEe1Nvbjs8NgTG6w=='
-profile::dns::rndc_key::rndc_secret_mdns:  'CIGrQ5sAnoaQhRiDSXX+WUGg9Z0tiphT4BCKbp9A1ceOUr5hqAPiqNp/UHoApIXmIAgni+v90swVPmDfETsLdQ=='
+profile::dns::rndc_key::rndc_secret_authoritative: 'FbhB5fLk8wbrJf18CDleTs+TcavNzD1BT0dOZ/kH51JYvx7gCW+4iHa2CJEf1G2I39xqcDC40LTyydO1XaC6Lg=='
+profile::dns::rndc_key::rndc_secret_admin:         '5n5fC0m42JovwO9PJMTQYaNP7j5UcRjmL0Lsq4JXz8eZIrGILt/5Lo+MVzdr31GbYn9C/fPEe1Nvbjs8NgTG6w=='
+profile::dns::rndc_key::rndc_secret_mdns:          'CIGrQ5sAnoaQhRiDSXX+WUGg9Z0tiphT4BCKbp9A1ceOUr5hqAPiqNp/UHoApIXmIAgni+v90swVPmDfETsLdQ=='
 
 profile::openstack::resource::networks:
   public:
